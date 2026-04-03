@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Jobseeker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class JobseekerDashboardController extends Controller
 {
