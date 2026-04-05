@@ -7,6 +7,7 @@ use App\Models\JobPost;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
+
 class JobPostController extends Controller
 {
     public function index()
@@ -20,19 +21,20 @@ class JobPostController extends Controller
         ]);
     }
 
-    public function approve(JobPost $jobPost)
-    {
-        $jobPost->update(['approval_status' => 'approved']);
+    // public function approve(JobPost $jobPost)
+    // {
+    //     $jobPost->update(['approval_status' => 'approved']);
 
-        return back()->with('success', 'Job approved!');
-    }
+    //     return back()->with('success', 'Job approved!');
+    // }
 
-    public function reject(JobPost $jobPost)
-    {
-        $jobPost->update(['approval_status' => 'rejected']);
+    // public function reject(JobPost $jobPost)
+    // {
+    //     $jobPost->update(['approval_status' => 'rejected']);
 
-        return back()->with('success', 'Job rejected!');
-    }
+    //     return back()->with('success', 'Job rejected!');
+    // }
+
 
     public function create()
     {
@@ -61,24 +63,28 @@ class JobPostController extends Controller
 
     public function edit(JobPost $jobPost)
     {
-        $this->authorize('update', $jobPost);
+        if ($jobPost->user_id !== auth()->id()) {
+            abort(403);
+        }
 
         return Inertia::render('Recruiter/JobPosts/Edit', [
             'job' => $jobPost,
         ]);
     }
 
-    public function update(Request $request, JobPost $jobPost)
+   public function update(Request $request, JobPost $jobPost)
     {
-        $this->authorize('update', $jobPost);
+        if ($jobPost->user_id !== auth()->id()) {
+            abort(403);
+        }
 
         $request->validate([
-            'title'       => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
-            'location'    => ['nullable', 'string', 'max:255'],
-            'salary_range'=> ['nullable', 'string', 'max:100'],
-            'category'    => ['nullable', 'string', 'max:100'],
-            'status'      => ['required', 'in:open,closed'],
+            'title'        => ['required', 'string', 'max:255'],
+            'description'  => ['required', 'string'],
+            'location'     => ['nullable', 'string', 'max:255'],
+            'salary_range' => ['nullable', 'string', 'max:100'],
+            'category'     => ['nullable', 'string', 'max:100'],
+            'status'       => ['required', 'in:open,closed'],
         ]);
 
         $jobPost->update($request->only('title', 'description', 'location', 'salary_range', 'category', 'status'));
@@ -89,7 +95,13 @@ class JobPostController extends Controller
 
     public function destroy(JobPost $jobPost)
     {
-        $this->authorize('update', $jobPost);
+        if ($jobPost->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        if ($jobPost->approval_status === 'approved') {
+            abort(403, 'Approved job posts cannot be deleted.');
+        }
 
         $jobPost->delete();
 
