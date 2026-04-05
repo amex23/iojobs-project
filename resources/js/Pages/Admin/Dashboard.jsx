@@ -30,7 +30,13 @@ export default function Dashboard() {
                     href={route('jobposts.index')}
                     className="block bg-gray-600 text-white px-4 py-3 rounded hover:bg-gray-700"
                 >
-                    🔍 View All Approved Jobs
+                    🌐 View All Approved Jobs
+                </Link>
+                 <Link
+                    href={route('profile.edit')}
+                    className="block bg-[#9CCAF0] text-white px-4 py-3 rounded hover:bg-[#76AFDE]"
+                >
+                    🪪 Update Account/Profile 
                 </Link>
             </div>
         </div>
