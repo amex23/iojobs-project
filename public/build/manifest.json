@@ -1,0 +1,373 @@
+{
+  "_ApplicationLogo-BX0H5Tit.js": {
+    "file": "assets/ApplicationLogo-BX0H5Tit.js",
+    "name": "ApplicationLogo",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_GuestLayout-CPWgOl0G.js": {
+    "file": "assets/GuestLayout-CPWgOl0G.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "_InputLabel-CttZSAKE.js": {
+    "file": "assets/InputLabel-CttZSAKE.js",
+    "name": "InputLabel",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_NotificationBell-B7Pvca_E.js": {
+    "file": "assets/NotificationBell-B7Pvca_E.js",
+    "name": "NotificationBell",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_PrimaryButton-fsXIqPJF.js": {
+    "file": "assets/PrimaryButton-fsXIqPJF.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_TextInput-DFReHXEr.js": {
+    "file": "assets/TextInput-DFReHXEr.js",
+    "name": "TextInput",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_transition-D_QRlIHC.js": {
+    "file": "assets/transition-D_QRlIHC.js",
+    "name": "transition",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Admin/Dashboard.jsx": {
+    "file": "assets/Dashboard-B_x8XzYr.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Admin/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_NotificationBell-B7Pvca_E.js"
+    ]
+  },
+  "resources/js/Pages/Admin/JobPosts/Edit.jsx": {
+    "file": "assets/Edit-z3HGbvPa.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Admin/JobPosts/Edit.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Admin/JobPosts/Index.jsx": {
+    "file": "assets/Index-DZyXwunY.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Admin/JobPosts/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.jsx": {
+    "file": "assets/ConfirmPassword-DybMxT6r.js",
+    "name": "ConfirmPassword",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword-CyXvTss0.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-BNEqejt8.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-C3jb61gM.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-CFnR-udf.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.jsx": {
+    "file": "assets/VerifyEmail-B2eI1Wui.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_GuestLayout-CPWgOl0G.js",
+      "_ApplicationLogo-BX0H5Tit.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.jsx": {
+    "file": "assets/Dashboard-CnmY62rx.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_NotificationBell-B7Pvca_E.js"
+    ]
+  },
+  "resources/js/Pages/JobPosts/Index.jsx": {
+    "file": "assets/Index-Dg_4iHuz.js",
+    "name": "Index",
+    "src": "resources/js/Pages/JobPosts/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/JobPosts/Show.jsx": {
+    "file": "assets/Show-DV1Kw_ZV.js",
+    "name": "Show",
+    "src": "resources/js/Pages/JobPosts/Show.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Jobseeker/Dashboard.jsx": {
+    "file": "assets/Dashboard-CxVVt8K1.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Jobseeker/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_NotificationBell-B7Pvca_E.js"
+    ]
+  },
+  "resources/js/Pages/Jobseeker/Messages/Index.jsx": {
+    "file": "assets/Index-CX9xlc7U.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Jobseeker/Messages/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Notifications/Index.jsx": {
+    "file": "assets/Index-BqaJP84W.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Notifications/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Profile/Edit.jsx": {
+    "file": "assets/Edit-Dba4q-H3.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Profile/Edit.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_ApplicationLogo-BX0H5Tit.js",
+      "_transition-D_QRlIHC.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx": {
+    "file": "assets/DeleteUserForm-Cgdp5BQ4.js",
+    "name": "DeleteUserForm",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_transition-D_QRlIHC.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx": {
+    "file": "assets/UpdatePasswordForm-BU1DauAO.js",
+    "name": "UpdatePasswordForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_transition-D_QRlIHC.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx": {
+    "file": "assets/UpdateProfileInformationForm-CutBD0nS.js",
+    "name": "UpdateProfileInformationForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-DFReHXEr.js",
+      "_InputLabel-CttZSAKE.js",
+      "_PrimaryButton-fsXIqPJF.js",
+      "_transition-D_QRlIHC.js"
+    ]
+  },
+  "resources/js/Pages/Recruiter/Dashboard.jsx": {
+    "file": "assets/Dashboard-BW0DcuKE.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Recruiter/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_NotificationBell-B7Pvca_E.js"
+    ]
+  },
+  "resources/js/Pages/Recruiter/JobPosts/Create.jsx": {
+    "file": "assets/Create-DsMKwZO0.js",
+    "name": "Create",
+    "src": "resources/js/Pages/Recruiter/JobPosts/Create.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Recruiter/JobPosts/Edit.jsx": {
+    "file": "assets/Edit-gmh_s726.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Recruiter/JobPosts/Edit.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Recruiter/JobPosts/Index.jsx": {
+    "file": "assets/Index-858LHGdJ.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Recruiter/JobPosts/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Recruiter/Messages/Index.jsx": {
+    "file": "assets/Index-pNmFux9H.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Recruiter/Messages/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Shared/Messages/Show.jsx": {
+    "file": "assets/Show-Bclo8Car.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Shared/Messages/Show.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Welcome.jsx": {
+    "file": "assets/Welcome-DKJmX6F7.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-qbk97c6b.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Dashboard.jsx",
+      "resources/js/Pages/Admin/JobPosts/Edit.jsx",
+      "resources/js/Pages/Admin/JobPosts/Index.jsx",
+      "resources/js/Pages/Auth/ConfirmPassword.jsx",
+      "resources/js/Pages/Auth/ForgotPassword.jsx",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/Auth/VerifyEmail.jsx",
+      "resources/js/Pages/Dashboard.jsx",
+      "resources/js/Pages/JobPosts/Index.jsx",
+      "resources/js/Pages/JobPosts/Show.jsx",
+      "resources/js/Pages/Jobseeker/Dashboard.jsx",
+      "resources/js/Pages/Jobseeker/Messages/Index.jsx",
+      "resources/js/Pages/Notifications/Index.jsx",
+      "resources/js/Pages/Profile/Edit.jsx",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "resources/js/Pages/Recruiter/Dashboard.jsx",
+      "resources/js/Pages/Recruiter/JobPosts/Create.jsx",
+      "resources/js/Pages/Recruiter/JobPosts/Edit.jsx",
+      "resources/js/Pages/Recruiter/JobPosts/Index.jsx",
+      "resources/js/Pages/Recruiter/Messages/Index.jsx",
+      "resources/js/Pages/Shared/Messages/Show.jsx",
+      "resources/js/Pages/Welcome.jsx"
+    ],
+    "css": [
+      "assets/app-DxmE0FFV.css"
+    ]
+  }
+}
