@@ -1,4 +1,6 @@
 import { useForm, Link } from '@inertiajs/react';
+import RecruiterHeader from '@/Components/RecruiterHeader';
+import Footer from '@/Components/Footer';
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -16,10 +18,12 @@ export default function Create() {
     };
 
     return (
-        <div className="p-8 max-w-2xl mx-auto">
+        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl h-auto flex flex-col justify-between h-screen">
+            <RecruiterHeader></RecruiterHeader>
+            <div className="bg-white p-8 w-full flex justify-center mx-auto flex-col items-center mt-6 shadow-md rounded-sm">
             <h1 className="text-2xl font-bold mb-6">Post a New Job</h1>
 
-            <form onSubmit={submit} className="space-y-4">
+            <form onSubmit={submit} className="space-y-4 w-[70%] py-3 px-3 rounded-lg bg-gray-400">
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Job Title</label>
                     <input type="text" value={data.title} onChange={e => setData('title', e.target.value)}
@@ -80,11 +84,13 @@ export default function Create() {
                         Cancel
                     </Link>
                     <button type="submit" disabled={processing}
-                        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                        className="text-white px-6 py-2 rounded bg-[#474747] hover:bg-[#141413]">
                         Post Job
                     </button>
                 </div>
             </form>
+            </div>
+            <Footer ></Footer>
         </div>
     );
 }

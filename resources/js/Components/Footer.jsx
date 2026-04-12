@@ -12,8 +12,8 @@ export default function Footer() {
                         <span role="img" aria-label="Love">
                             ❤️
                         </span>{' '}
-                        by the IOJobs team.
-                        &nbsp;<a href="">Contact Us </a>
+                        {/* by the IOJobs team. */}
+                        {/* &nbsp;<a href="">Contact Us </a> */}
                 </div>
     
     );

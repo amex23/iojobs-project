@@ -5,7 +5,7 @@ export default function NotificationBell() {
 
     return (
         <Link href={route('notifications.index')} className="relative inline-flex items-center">
-            <span className='bg-blue-400 flex items-center px-4 gap-2 py-2 rounded-md text-sm text-white'>
+            <span className='bg-white flex border-2 border-gray-300 items-center px-4 gap-2 py-2 rounded-md text-sm text-black font-bold'>
                 Message
                 
                 {unreadCount > 0 && (

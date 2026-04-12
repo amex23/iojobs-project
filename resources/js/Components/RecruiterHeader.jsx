@@ -1,0 +1,28 @@
+import { useState, useRef, useEffect } from 'react';
+import { Link, router } from '@inertiajs/react';
+import NotificationBell from '@/Components/NotificationBell';
+
+export default function RecruiterHeader({ jobs = [] }) {
+    
+    return (
+        <div className="flex items-center justify-between mb-6">
+            <span className='flex items-center gap-x-4 w-full mr-4'>
+                <h2 className="font-bold text-2xl text-gray shrink-0">IOJobs</h2>
+
+              
+            </span>
+
+            <div className="flex items-center gap-4 shrink-0">
+                <NotificationBell />
+                <Link
+                    href={route('logout')}
+                    method="post"
+                    as="button"
+                    className="bg-[#474747] font-bold text-white px-4 py-2 rounded text-sm hover:bg-[#141413]"
+                >
+                    Logout
+                </Link>
+            </div>
+        </div>
+    );
+}

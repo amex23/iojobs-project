@@ -1,4 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
+import Footer from '@/Components/Footer';
+import JobseekerHeader from '@/Components/JobseekerHeader';
 
 export default function Index({ jobs }) {
     const { auth } = usePage().props;
@@ -11,9 +13,13 @@ export default function Index({ jobs }) {
         : route('jobseeker.dashboard');
 
     return (
-        <div className="p-8 max-w-4xl mx-auto">
+
+    <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl h-screen flex flex-col justify-between h-screen">    
+        <div className="flex flex-col w-full">
+            <JobseekerHeader jobs={jobs} />
+        <div className="w-full mx-auto mt-4">
             <div className="flex items-center justify-between mb-6">
-                <h1 className="text-2xl font-bold">All Approved Jobs</h1>
+                <h1 className="text-2xl font-bold">All Jobs</h1>
                 <Link href={dashboardRoute} className="text-sm text-gray-500 underline">
                     ← Dashboard
                 </Link>
@@ -22,7 +28,7 @@ export default function Index({ jobs }) {
             {jobs.length === 0 ? (
                 <p className="text-gray-500">No approved jobs available.</p>
             ) : (
-                <div className="space-y-4">
+                <div className="space-y-4 w-1/3">
                     {jobs.map(job => (
                         <div key={job.id} className="border rounded-lg p-5 hover:shadow-md transition">
                             <div className="flex items-center justify-between">
@@ -45,5 +51,8 @@ export default function Index({ jobs }) {
                 </div>
             )}
         </div>
+        </div>
+        <Footer></Footer>    
+    </div>        
     );
 }

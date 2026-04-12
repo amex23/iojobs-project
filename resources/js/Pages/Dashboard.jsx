@@ -22,19 +22,19 @@ export default function Dashboard() {
             <div className="space-y-3">
                 <Link
                     href={route('recruiter.jobs.index')}
-                    className="block bg-blue-600 text-white px-4 py-3 rounded hover:bg-blue-700"
+                    className="block text-white px-4 py-3 rounded bg-[#474747] hover:bg-[#3B3B3B]"
                 >
                     📄 My Job Posts
                 </Link>
                 <Link
                     href={route('recruiter.jobs.create')}
-                    className="block bg-green-600 text-white px-4 py-3 rounded hover:bg-green-700"
+                    className="block text-white px-4 py-3 rounded bg-[#474747] hover:bg-[#3B3B3B]"
                 >
                     ➕ Post a New Job
                 </Link>
                 <Link
                     href={route('profile.edit')}
-                    className="block bg-[#9CCAF0] text-white px-4 py-3 rounded hover:bg-[#76AFDE]"
+                    className="block text-white px-4 py-3 rounded bg-[#474747] hover:bg-[#3B3B3B]"
                 >
                     🪪 Update Account/Profile 
                 </Link>

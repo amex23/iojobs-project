@@ -37,9 +37,9 @@ export default function JobseekerHeader({ jobs = [] }) {
             <span className='flex items-center gap-x-4 w-full mr-4'>
                 <h2 className="font-bold text-2xl text-gray shrink-0">IOJobs</h2>
 
-                <div className="relative w-full" ref={searchRef}>
+                <div className="relative w-1/3" ref={searchRef}>
                     <input
-                        className='rounded-xl w-full border-gray-300'
+                        className='rounded-md w-full border-2 border-gray-300'
                         type="text"
                         placeholder='Search a job..'
                         value={search}
@@ -87,7 +87,7 @@ export default function JobseekerHeader({ jobs = [] }) {
                     href={route('logout')}
                     method="post"
                     as="button"
-                    className="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600"
+                    className="bg-[#474747] font-bold text-white px-4 py-2 rounded text-sm hover:bg-[#141413]"
                 >
                     Logout
                 </Link>

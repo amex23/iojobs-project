@@ -1,4 +1,6 @@
 import { useForm, usePage, Link } from '@inertiajs/react';
+import Footer from '@/Components/Footer';
+import JobseekerHeader from '@/Components/JobseekerHeader';
 
 export default function Show({ thread }) {
     const { auth } = usePage().props;
@@ -20,12 +22,17 @@ export default function Show({ thread }) {
     };
 
     return (
-        <div className="p-8 max-w-2xl mx-auto">
+    <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen gap-y-5">    
+
+        <div className="w-full">
+        <JobseekerHeader jobs={[]} />
+            <div className='justify-start w-full flex'>
+                <div className="w-1/2 mt-4 shadow-md px-7 py-7 rounded-lg bg-white border-gray-300">
             {/* Header */}
             <div className="mb-6">
-                <Link href={backRoute} className="text-sm text-gray-500 underline">
+                {/* <Link href={backRoute} className="text-sm text-gray-500 underline">
                     ← Back to Messages
-                </Link>
+                </Link> */}
                 <h1 className="text-xl font-bold mt-2">{thread.job_post?.title}</h1>
                 <p className="text-sm text-gray-500">With: {otherPerson?.name}</p>
             </div>
@@ -82,6 +89,12 @@ export default function Show({ thread }) {
                     {processing ? 'Sending...' : 'Send Reply'}
                 </button>
             </div>
+                </div>
+            </div>
         </div>
+
+        <Footer className="mt-7" />
+    </div>            
+
     );
 }

@@ -63,17 +63,17 @@ export default function Dashboard({ jobs = [] }) {
                 {/* Header */}
                 <JobseekerHeader jobs={jobs} />
 
-                <Link
+                {/* <Link
                     href={route('jobposts.index')}
                     className="block bg-gray-600 text-white px-4 py-3 rounded hover:bg-gray-700 mb-4"
                 >
                     🔍 Apply for Jobs
-                </Link>
+                </Link> */}
 
                 <div className="flex mt-4 gap-4">
 
                     {/* Filter Sidebar */}
-                    <div className='w-[30%] flex flex-col bg-red-400 p-4 rounded gap-1'>
+                    <div className='w-[30%] flex flex-col bg-[#474747] p-4 rounded gap-1'>
                         <span className='font-bold text-white mb-2'>Filter by Category</span>
                         {CATEGORIES.map(cat => (
                             <button
@@ -81,8 +81,8 @@ export default function Dashboard({ jobs = [] }) {
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`text-left px-3 py-1 rounded text-sm ${
                                     selectedCategory === cat
-                                        ? 'bg-white text-red-500 font-bold'
-                                        : 'text-white hover:bg-red-300'
+                                        ? 'bg-white text-black font-bold'
+                                        : 'text-white hover:bg-gray-600'
                                 }`}
                             >
                                 {cat}
@@ -91,13 +91,13 @@ export default function Dashboard({ jobs = [] }) {
                     </div>
 
                     {/* Job Posts */}
-                    <div className='w-[70%] bg-blue-400 p-4 rounded flex flex-col gap-3'>
+                    <div className='w-[70%] border-gray-300 px-4 py-0 rounded flex flex-col gap-3'>
                         {filtered.length === 0 ? (
                             <p className="text-white">No job posts found.</p>
                         ) : (
                             filtered.map(job => (
                                 <div key={job.id} className="bg-white rounded p-4 shadow flex items-start justify-between">
-                                    <div className="flex-1 flex flex-col pr-4 gap-y-2 bg-green-400 flex-col ">
+                                    <div className="flex-1 flex flex-col pr-4 gap-y-2 flex-col mr-4">
                                         <h3 className="font-bold text-lg">{job.title}</h3>
                                         <p className="text-sm text-gray-500">
                                             {job.recruiter?.name} · {job.location} · {job.salary_range}
@@ -115,9 +115,9 @@ export default function Dashboard({ jobs = [] }) {
                                     </div>
                                     <Link
                                         href={route('jobposts.show', job.id)}
-                                        className="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 shrink-0"
+                                        className="bg-[#474747] text-white px-4 py-2 rounded text-sm hover:bg-[#3B3B3B] shrink-0"
                                     >
-                                        View
+                                        Apply
                                     </Link>
                                 </div>
                             ))
@@ -126,7 +126,7 @@ export default function Dashboard({ jobs = [] }) {
 
                 </div>
             </div>
-            <Footer />
+            <Footer  />
         </div>
     );
 }
