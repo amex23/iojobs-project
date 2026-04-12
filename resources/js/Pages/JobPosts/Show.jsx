@@ -1,5 +1,8 @@
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { useState } from 'react';
+import Footer from '@/Components/Footer';
+import JobseekerHeader from '@/Components/JobseekerHeader';
+
 
 export default function Show({ job }) {
     const { auth } = usePage().props;
@@ -21,12 +24,14 @@ export default function Show({ job }) {
     };
 
     return (
-        <div className="p-8 max-w-3xl mx-auto">
-            <Link href={route('jobposts.index')} className="text-sm text-gray-500 underline">
+        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen">
+            
+            <div className="flex flex-col items-start">
+                <Link href={route('jobposts.index')} className="text-sm text-gray-500 underline">
                 ← Back to Jobs
             </Link>
 
-            <div className="mt-6">
+            <div className="mt-6 bg-red-400">
                 <h1 className="text-3xl font-bold">{job.title}</h1>
                 <p className="text-gray-500 mt-2">
                     Posted by <span className="font-medium">{job.recruiter.name}</span>
@@ -86,6 +91,8 @@ export default function Show({ job }) {
                     </div>
                 )}
             </div>
+            </div>
+            <Footer />
         </div>
     );
 }

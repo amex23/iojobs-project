@@ -48,8 +48,21 @@ export default function Edit({ job }) {
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Category</label>
-                    <input type="text" value={data.category} onChange={e => setData('category', e.target.value)}
-                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+                    <select value={data.category} onChange={e => setData('category', e.target.value)}
+                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Virtual Assistant">Virtual Assistant</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="Data Entry">Data Entry</option>
+                        <option value="Customer Service">Customer Service</option>
+                        <option value="Accounting & Finance">Accounting & Finance</option>
+                        <option value="Marketing & Sales">Marketing & Sales</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category}</p>}
                 </div>
 
                 <div>
