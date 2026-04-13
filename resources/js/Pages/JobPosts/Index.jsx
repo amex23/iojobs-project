@@ -9,6 +9,8 @@ export default function Index({ jobs, appliedJobIds = [] }) {
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 5;
 
+    const normalizedAppliedIds = appliedJobIds.map(id => parseInt(id));
+
     const dashboardRoute = role === 'admin'
         ? route('admin.dashboard')
         : role === 'jobrecruiter'
@@ -36,7 +38,7 @@ export default function Index({ jobs, appliedJobIds = [] }) {
                         <>
                             <div className="space-y-4 w-1/3">
                                 {paginated.map(job => {
-                                    const hasApplied = appliedJobIds.includes(job.id);
+                                    const hasApplied = normalizedAppliedIds.includes(job.id);
                                     return (
                                         <div key={job.id} className="bg-white rounded p-4 shadow flex items-start justify-between w-full">
                                             <div className="flex items-center justify-between w-full">
