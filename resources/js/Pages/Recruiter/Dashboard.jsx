@@ -10,7 +10,7 @@ export default function Dashboard() {
           
             <div className="flex flex-col">
                 <div className="flex items-center justify-between mb-6">
-                    <h1 className="text-xl font-bold">Recruiter Dashboard 👷</h1>
+                    <h1 className="text-xl font-bold">Recruiter Dashboard </h1>
                     <div className="flex items-center gap-4">
                         <NotificationBell />
                         <Link

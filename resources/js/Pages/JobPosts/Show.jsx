@@ -55,7 +55,7 @@ export default function Show({ job }) {
                             {!composing ? (
                                 <button
                                     onClick={() => setComposing(true)}
-                                    className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-medium"
+                                    className="text-white px-6 py-3 rounded-lg bg-black hover:bg-gray-600 font-medium"
                                 >
                                     📧 Message Recruiter
                                 </button>
@@ -78,7 +78,7 @@ export default function Show({ job }) {
                                         <button
                                             onClick={sendMessage}
                                             disabled={processing}
-                                            className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm hover:bg-green-700 disabled:opacity-50"
+                                            className="bg-black hover:bg-gray-600 text-white px-5 py-2 rounded-lg text-sm  disabled:opacity-50"
                                         >
                                             {processing ? 'Sending...' : '✉️ Send Message'}
                                         </button>

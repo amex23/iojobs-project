@@ -11,13 +11,18 @@ class JobseekerDashboardController extends Controller
     public function index()
     {
         $jobs = JobPost::where('status', 'open')
-                    ->where('approval_status', 'approved')
-                    ->with('recruiter:id,name')
-                    ->latest()
-                    ->get();
+            ->where('approval_status', 'approved')
+            ->with('recruiter:id,name')
+            ->latest()
+            ->get();
 
-        return Inertia::render('Jobseeker/JobPosts/Index', [
+        $appliedJobIds = \App\Models\MessageThread::where('sender_id', auth()->id())
+            ->pluck('job_post_id')
+            ->toArray();
+
+        return Inertia::render('JobPosts/Index', [
             'jobs' => $jobs,
+            'appliedJobIds' => $appliedJobIds,
         ]);
     }
 }

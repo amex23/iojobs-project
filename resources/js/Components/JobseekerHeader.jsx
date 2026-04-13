@@ -18,7 +18,7 @@ export default function JobseekerHeader({ jobs = [] }) {
     }, []);
 
     const suggestions = search.trim().length > 0
-        ? jobs.filter(job =>
+        ? jobs.filter(job => job.approval_status === 'approved').filter(job =>
             job.title.toLowerCase().includes(search.toLowerCase()) ||
             job.category?.toLowerCase().includes(search.toLowerCase()) ||
             job.location?.toLowerCase().includes(search.toLowerCase())

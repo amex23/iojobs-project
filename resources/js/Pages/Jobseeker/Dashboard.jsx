@@ -1,12 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link, router } from '@inertiajs/react';
-import NotificationBell from '@/Components/NotificationBell';
+import { useState } from 'react';
+import { Link } from '@inertiajs/react';
 import Footer from '@/Components/Footer';
 import JobseekerHeader from '@/Components/JobseekerHeader';
 
 const CATEGORIES = [
     'All',
-    'Web Development',
+    'IT/Web Development',
     'Virtual Assistant',
     'Graphic Design',
     'Data Entry',
@@ -18,67 +17,35 @@ const CATEGORIES = [
     'Others',
 ];
 
-export default function Dashboard({ jobs = [] }) {
+export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [search, setSearch] = useState('');
-    const [showDropdown, setShowDropdown] = useState(false);
-    const searchRef = useRef(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const perPage = 5;
 
-    // Close dropdown when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (searchRef.current && !searchRef.current.contains(e.target)) {
-                setShowDropdown(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+    const approved = jobs.filter(job => job.approval_status === 'approved');
 
-    // Jobs matching search keyword (for dropdown suggestions)
-    const suggestions = search.trim().length > 0
-        ? jobs.filter(job =>
-            job.title.toLowerCase().includes(search.toLowerCase()) ||
-            job.category?.toLowerCase().includes(search.toLowerCase()) ||
-            job.location?.toLowerCase().includes(search.toLowerCase())
-          ).slice(0, 6)
-        : [];
-
-    // Jobs shown in main area (filtered by category)
     const filtered = selectedCategory === 'All'
-        ? jobs
-        : jobs.filter(job => job.category === selectedCategory);
+        ? approved
+        : approved.filter(job => job.category === selectedCategory);
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter' && search.trim()) {
-            setShowDropdown(false);
-            router.visit(route('jobposts.index', { search: search.trim() }));
-        }
-    };
+    const totalPages = Math.ceil(filtered.length / perPage);
+    const paginated = filtered.slice((currentPage - 1) * perPage, currentPage * perPage);
 
     return (
         <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen">
             <div className='flex flex-col'>
 
-                {/* Header */}
                 <JobseekerHeader jobs={jobs} />
-
-                {/* <Link
-                    href={route('jobposts.index')}
-                    className="block bg-gray-600 text-white px-4 py-3 rounded hover:bg-gray-700 mb-4"
-                >
-                    🔍 Apply for Jobs
-                </Link> */}
 
                 <div className="flex mt-4 gap-4">
 
                     {/* Filter Sidebar */}
-                    <div className='w-[30%] flex flex-col bg-[#474747] p-4 rounded gap-1'>
+                    <div className='w-[30%] flex flex-col bg-[#474747] p-4 rounded gap-1 self-start sticky top-4'>
                         <span className='font-bold text-white mb-2'>Filter by Category</span>
                         {CATEGORIES.map(cat => (
                             <button
                                 key={cat}
-                                onClick={() => setSelectedCategory(cat)}
+                                onClick={() => { setSelectedCategory(cat); setCurrentPage(1); }}
                                 className={`text-left px-3 py-1 rounded text-sm ${
                                     selectedCategory === cat
                                         ? 'bg-white text-black font-bold'
@@ -92,41 +59,85 @@ export default function Dashboard({ jobs = [] }) {
 
                     {/* Job Posts */}
                     <div className='w-[70%] border-gray-300 px-4 py-0 rounded flex flex-col gap-3'>
-                        {filtered.length === 0 ? (
-                            <p className="text-white">No job posts found.</p>
+                        {paginated.length === 0 ? (
+                            <p className="text-gray-500">No job posts found.</p>
                         ) : (
-                            filtered.map(job => (
-                                <div key={job.id} className="bg-white rounded p-4 shadow flex items-start justify-between">
-                                    <div className="flex-1 flex flex-col pr-4 gap-y-2 flex-col mr-4">
-                                        <h3 className="font-bold text-lg">{job.title}</h3>
-                                        <p className="text-sm text-gray-500">
-                                            {job.recruiter?.name} · {job.location} · {job.salary_range}
-                                        </p>
-                                        <span>
-                                            <span className="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded mt-1">
-                                            {job.category}
-                                        </span>
-                                        </span>
-                                        <p className="text-sm mt-2 text-gray-600">
-                                            {job.description?.length > 250
-                                                ? job.description.substring(0, 250) + '...'
-                                                : job.description}
-                                        </p>
+                            paginated.map(job => {
+                                const hasApplied = appliedJobIds.includes(job.id);
+                                return (
+                                    <div key={job.id} className="bg-white rounded p-4 shadow flex items-start justify-between">
+                                        <div className="flex-1 flex flex-col pr-4 gap-y-2 mr-4">
+                                            <h3 className="font-bold text-lg">{job.title}</h3>
+                                            <p className="text-sm text-gray-500">
+                                                {job.recruiter?.name} · {job.location} · {job.salary_range}
+                                            </p>
+                                            <span>
+                                                <span className="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded mt-1">
+                                                    {job.category}
+                                                </span>
+                                            </span>
+                                            <p className="text-sm mt-2 text-gray-600">
+                                                {job.description?.length > 250
+                                                    ? job.description.substring(0, 250) + '...'
+                                                    : job.description}
+                                            </p>
+                                        </div>
+                                        <Link
+                                            href={route('jobposts.show', job.id)}
+                                            className={`px-4 py-2 rounded text-sm shrink-0 font-bold text-white ${
+                                                hasApplied
+                                                    ? 'bg-green-600 hover:bg-green-700'
+                                                    : 'bg-[#474747] hover:bg-[#3B3B3B]'
+                                            }`}
+                                        >
+                                            {hasApplied ? '✓ Applied' : 'Apply'}
+                                        </Link>
                                     </div>
-                                    <Link
-                                        href={route('jobposts.show', job.id)}
-                                        className="bg-[#474747] text-white px-4 py-2 rounded text-sm hover:bg-[#3B3B3B] shrink-0 font-bold"
+                                );
+                            })
+                        )}
+
+                        {/* Pagination */}
+                        {totalPages > 1 && (
+                            <div className="flex items-center justify-center gap-2 mt-4">
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                                    disabled={currentPage === 1}
+                                    className="px-3 py-1 rounded border text-sm disabled:opacity-40 hover:bg-gray-100"
+                                >
+                                    ← Prev
+                                </button>
+
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                    <button
+                                        key={page}
+                                        onClick={() => setCurrentPage(page)}
+                                        className={`px-3 py-1 rounded border text-sm ${
+                                            currentPage === page
+                                                ? 'bg-[#474747] text-white border-[#474747]'
+                                                : 'hover:bg-gray-100'
+                                        }`}
                                     >
-                                        Apply
-                                    </Link>
-                                </div>
-                            ))
+                                        {page}
+                                    </button>
+                                ))}
+
+                                <button
+                                    onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                                    disabled={currentPage === totalPages}
+                                    className="px-3 py-1 rounded border text-sm disabled:opacity-40 hover:bg-gray-100"
+                                >
+                                    Next →
+                                </button>
+                            </div>
                         )}
                     </div>
 
                 </div>
             </div>
-            <Footer  />
+            <div className='mt-7'>
+                <Footer />
+            </div>
         </div>
     );
 }

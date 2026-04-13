@@ -17,10 +17,12 @@ export default function Create() {
         post(route('recruiter.jobs.store'));
     };
 
+    
+
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl h-auto flex flex-col justify-between h-screen">
+        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl lg:h-[150vh] flex flex-col justify-between">
             <RecruiterHeader></RecruiterHeader>
-            <div className="bg-white p-8 w-full flex justify-center mx-auto flex-col items-center mt-6 shadow-md rounded-sm">
+            <div className="bg-white px-8 py-12 w-full flex justify-center mx-auto flex-col items-center shadow-md rounded-sm">
             <h1 className="text-2xl font-bold mb-6">Post a New Job</h1>
 
             <form onSubmit={submit} className="space-y-4 w-[70%] py-3 px-3 rounded-lg bg-[#545454]">
@@ -56,7 +58,7 @@ export default function Create() {
                     <select value={data.category} onChange={e => setData('category', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                         <option value="">-- Select Category --</option>
-                        <option value="Web Development">Web Development</option>
+                        <option value="IT/Web Development">IT/Web Development</option>
                         <option value="Virtual Assistant">Virtual Assistant</option>
                         <option value="Graphic Design">Graphic Design</option>
                         <option value="Data Entry">Data Entry</option>
