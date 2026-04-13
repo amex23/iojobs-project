@@ -1,1 +1,0 @@
-import{b as t,j as e}from"./app-BEcHfmIC.js";function a(){const{unreadCount:r}=t().props;return e.jsxs("div",{className:"text-center text-sm text-gray-500 pb-0",children:["IOJobs © ",new Date().getFullYear()," - Crafted with"," ",e.jsx("span",{role:"img","aria-label":"Love",children:"❤️"})," ","by the IOJobs team.  ",e.jsx("a",{href:"",children:"Contact Us "})]})}export{a as F};

@@ -115,7 +115,7 @@ export default function Dashboard({ jobs = [] }) {
                                     </div>
                                     <Link
                                         href={route('jobposts.show', job.id)}
-                                        className="bg-[#474747] text-white px-4 py-2 rounded text-sm hover:bg-[#3B3B3B] shrink-0"
+                                        className="bg-[#474747] text-white px-4 py-2 rounded text-sm hover:bg-[#3B3B3B] shrink-0 font-bold"
                                     >
                                         Apply
                                     </Link>

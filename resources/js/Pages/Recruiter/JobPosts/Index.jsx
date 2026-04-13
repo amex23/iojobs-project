@@ -20,7 +20,7 @@ export default function Index({ jobs }) {
                         <h1 className="text-2xl font-bold">My Job Posts</h1>
                         <Link
                             href={route('recruiter.jobs.create')}
-                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                            className="bg-[#474747] hover:bg-[#141413] text-white px-4 py-2 rounded"
                         >
                             + Post a Job
                         </Link>

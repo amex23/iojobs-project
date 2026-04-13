@@ -23,36 +23,36 @@ export default function Create() {
             <div className="bg-white p-8 w-full flex justify-center mx-auto flex-col items-center mt-6 shadow-md rounded-sm">
             <h1 className="text-2xl font-bold mb-6">Post a New Job</h1>
 
-            <form onSubmit={submit} className="space-y-4 w-[70%] py-3 px-3 rounded-lg bg-gray-400">
+            <form onSubmit={submit} className="space-y-4 w-[70%] py-3 px-3 rounded-lg bg-[#545454]">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Job Title</label>
+                    <label className="block text-sm font-medium text-white">Job Title</label>
                     <input type="text" value={data.title} onChange={e => setData('title', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
                     {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                    <label className="block text-sm font-medium text-white">Description</label>
                     <textarea rows={5} value={data.description} onChange={e => setData('description', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required />
                     {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Location</label>
+                    <label className="block text-sm font-medium text-white">Location</label>
                     <input type="text" value={data.location} onChange={e => setData('location', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Salary Range</label>
+                    <label className="block text-sm font-medium text-white">Salary Range</label>
                     <input type="text" value={data.salary_range} onChange={e => setData('salary_range', e.target.value)}
                         placeholder="e.g. ₱20,000 - ₱30,000"
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Category</label>
+                    <label className="block text-sm font-medium text-white">Category</label>
                     <select value={data.category} onChange={e => setData('category', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
                         <option value="">-- Select Category --</option>
@@ -71,7 +71,7 @@ export default function Create() {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700">Status</label>
+                    <label className="block text-sm font-medium text-white">Status</label>
                     <select value={data.status} onChange={e => setData('status', e.target.value)}
                         className="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                         <option value="open">Open</option>
@@ -80,11 +80,11 @@ export default function Create() {
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
-                    <Link href={route('recruiter.jobs.index')} className="text-sm text-gray-500 underline">
+                    <Link href={route('recruiter.jobs.index')} className="text-sm text-white underline">
                         Cancel
                     </Link>
                     <button type="submit" disabled={processing}
-                        className="text-white px-6 py-2 rounded bg-[#474747] hover:bg-[#141413]">
+                        className="text-white px-6 py-2 rounded bg-black hover:bg-[#141413]">
                         Post Job
                     </button>
                 </div>

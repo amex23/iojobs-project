@@ -1,0 +1,1 @@
+import{b as t,j as e}from"./app-BKFeZlGK.js";function a(){const{unreadCount:r}=t().props;return e.jsxs("div",{className:"text-center text-sm text-gray-500 pb-0",children:["IOJobs © ",new Date().getFullYear()," - Crafted with"," ",e.jsx("span",{role:"img","aria-label":"Love",children:"❤️"})," "]})}export{a as F};
