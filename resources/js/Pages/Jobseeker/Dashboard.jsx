@@ -86,7 +86,7 @@ export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
                                             href={route('jobposts.show', job.id)}
                                             className={`px-4 py-2 rounded text-sm shrink-0 font-bold text-white ${
                                                 hasApplied
-                                                    ? 'bg-green-600 hover:bg-green-700'
+                                                    ? 'bg-[#00D100] hover:bg-green-700'
                                                     : 'bg-[#474747] hover:bg-[#3B3B3B]'
                                             }`}
                                         >

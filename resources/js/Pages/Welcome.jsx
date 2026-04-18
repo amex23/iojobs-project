@@ -79,6 +79,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                                     {/* 3 Icons Row */}
                                     <div className="flex flex-col lg:flex-row items-start justify-between w-full gap-4 mt-4">
+                                        
 
                                         {/* About Us */}
                                         <div className="flex flex-col items-center gap-2 w-full lg:w-1/3 ">

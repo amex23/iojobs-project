@@ -24,7 +24,7 @@ export default function Show({ job }) {
     };
 
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen">
+        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between h-auto">
 
             <div className="flex flex-col w-full">
                 <JobseekerHeader jobs={[]} />
@@ -33,7 +33,7 @@ export default function Show({ job }) {
                 ← Back to Jobs
             </Link>
 
-                <div className="flex justify-start w-full">
+                <div className="flex justify-start w-full min-h-screen">
                     <div className="mt-6 shadow-md bg-white p-7 rounded-sm w-1/2">
                     <h1 className="text-2xl font-bold">{job.title}</h1>
                     <p className="text-gray-500 mt-2">
@@ -99,7 +99,9 @@ export default function Show({ job }) {
         </div>
             
             
-            <Footer />
+            <span className='mt-10'>
+                <Footer />
+            </span>
         </div>
     );
 }
