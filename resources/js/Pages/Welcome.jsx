@@ -78,10 +78,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     </div>
 
                                     {/* 3 Icons Row */}
-                                    <div className="hidden lg:flex flex-row items-start justify-between w-full gap-4 mt-4">
+                                    <div className="flex flex-col lg:flex-row items-start justify-between w-full gap-4 mt-4">
 
                                         {/* About Us */}
-                                        <div className="flex flex-col items-center gap-2 w-1/3 ">
+                                        <div className="flex flex-col items-center gap-2 w-full lg:w-1/3 ">
                                             <div className="flex w-full justify-center">
                                                 <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#474747]/10 sm:size-16">
                                                 <svg className="size-5 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
 
                                         {/* Why IOJobs */}
-                                        <div className="flex flex-col items-center gap-2 w-1/3">
+                                        <div className="flex flex-col items-center gap-2 w-full lg:w-1/3">
                                             <div className="flex justify-center w-full">
                                                 <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#474747]/10 sm:size-16">
                                                     <span className="text-3xl font-bold text-[#141413]">?</span>
@@ -115,7 +115,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         </div>
 
                                         {/* Get Hired */}
-                                        <div className="flex flex-col items-center gap-2 w-1/3">
+                                        <div className="flex flex-col items-center gap-2 w-full lg:w-1/3">
                                             <div className="flex justify-center w-full">
                                                 <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-[#474747]/10 sm:size-16">
                                                 <svg className="size-6 sm:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#141413">
