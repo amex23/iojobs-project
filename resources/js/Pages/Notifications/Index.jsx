@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, router, usePage } from '@inertiajs/react';
 import Footer from '@/Components/Footer';
 import JobseekerHeader from '@/Components/JobseekerHeader';
+import RecruiterHeader from '@/Components/RecruiterHeader';
+import AllHeader from '@/Components/AllHeader';
 
 export default function Index({ notifications }) {
     const { auth } = usePage().props;
@@ -29,7 +31,9 @@ export default function Index({ notifications }) {
     return (
     <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between gap-y-5">    
         <div className='flex w-full flex-col gap-y-5 min-h-[80vh]'>
-            <JobseekerHeader jobs={[]} />
+            {role === 'admin' && <AllHeader jobs={[]} />}
+            {role === 'jobseeker' && <JobseekerHeader jobs={[]} />}
+            {role === 'jobrecruiter' && <RecruiterHeader />}
             <div className="w-full mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-2xl font-bold">✉️ Messages</h1>

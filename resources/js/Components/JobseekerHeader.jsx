@@ -35,7 +35,7 @@ export default function JobseekerHeader({ jobs = [] }) {
     return (
         <div className="flex items-center justify-between mb-6">
             <span className='flex items-center gap-x-4 w-full mr-4'>
-                <h2 className="font-bold text-2xl text-gray shrink-0">IOJobs</h2>
+                <h2 className="font-bold text-2xl text-black shrink-0">IOJobs</h2>
 
                 <div className="relative w-1/3" ref={searchRef}>
                     <input

@@ -108,4 +108,17 @@ class JobPostController extends Controller
         return redirect()->route('recruiter.jobs.index')
                          ->with('success', 'Job post deleted!');
     }
+
+    public function allJobs()
+    {
+        $jobs = \App\Models\JobPost::where('status', 'open')
+            ->where('approval_status', 'approved')
+            ->with('recruiter:id,name')
+            ->latest()
+            ->get();
+
+        return Inertia::render('Recruiter/AllJobs', [
+            'jobs' => $jobs,
+        ]);
+    }
 }

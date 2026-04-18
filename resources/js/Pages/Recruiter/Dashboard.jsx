@@ -45,6 +45,13 @@ export default function Dashboard() {
                     >
                         🪪 Update Account/Profile
                     </Link>
+
+                    <Link
+                        href={route('recruiter.jobs.all')}
+                        className="block text-white px-4 py-3 rounded bg-[#474747] hover:bg-[#3B3B3B]"
+                    >
+                        🔍 See All Jobs
+                    </Link>
                 </div>
             </div>
 

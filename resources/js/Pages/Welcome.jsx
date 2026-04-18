@@ -20,7 +20,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                         <header className="flex lg:grid items-center gap-2 py-10 lg:grid-cols-3">
                             <div>
-                                <h1 className='font-bold text-2xl text-gray'>IOJobs</h1>
+                                <h1 className='font-bold text-2xl text-black'>IOJobs</h1>
                             </div>
                             <div className="flex lg:col-start-2 lg:justify-center"></div>
                             <nav className="-mx-3 flex flex-1 justify-end">

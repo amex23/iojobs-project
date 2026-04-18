@@ -1,12 +1,15 @@
 import { useForm, usePage, Link } from '@inertiajs/react';
 import Footer from '@/Components/Footer';
 import JobseekerHeader from '@/Components/JobseekerHeader';
+import RecruiterHeader from '@/Components/RecruiterHeader';
+import AllHeader from '@/Components/AllHeader';
 
 export default function Show({ thread }) {
     const { auth } = usePage().props;
     const { data, setData, post, processing, reset, errors } = useForm({ body: '' });
 
     const isMe = (id) => id === auth.user.id;
+    const role = auth.user.role;
     const otherPerson = isMe(thread.sender_id) ? thread.recipient : thread.sender;
 
     const backRoute = auth.user.role === 'jobseeker'
@@ -25,7 +28,9 @@ export default function Show({ thread }) {
     <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen gap-y-5">    
 
         <div className="w-full">
-        <JobseekerHeader jobs={[]} />
+         {role === 'admin' && <AllHeader jobs={[]} />}
+         {role === 'jobseeker' && <JobseekerHeader jobs={[]} />}
+         {role === 'jobrecruiter' && <RecruiterHeader />}
             <div className='justify-start w-full flex'>
                 <div className="w-1/2 mt-4 shadow-md px-7 py-7 rounded-lg bg-white border-gray-300">
             {/* Header */}

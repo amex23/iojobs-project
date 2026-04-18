@@ -5,6 +5,8 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import AllHeader from '@/Components/AllHeader';
+import JobseekerHeader from '@/Components/JobseekerHeader';
+import RecruiterHeader from '@/Components/RecruiterHeader';
 import Footer from '@/Components/Footer';
 
 
@@ -20,7 +22,9 @@ export default function AuthenticatedLayout({ header, children }) {
 
             <div className="relative w-full flex justify-center">
                 <div className="w-full max-w-2xl px-6 lg:max-w-7xl">
-                    <AllHeader></AllHeader>
+                    {user.role === 'admin' && <AllHeader />}
+                    {user.role === 'jobseeker' && <JobseekerHeader jobs={[]} />}
+                    {user.role === 'jobrecruiter' && <RecruiterHeader />}
                 </div>
             </div>
 
