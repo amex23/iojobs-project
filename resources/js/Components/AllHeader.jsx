@@ -33,6 +33,7 @@ export default function AllHeader ({ jobs = [] }) {
     };
 
     return (
+        
         <div className="flex items-center justify-between mb-6">
             <span className='flex items-center gap-x-4 w-full mr-4'>
                 <h2 className="font-bold text-2xl text-black shrink-0">IOJobs</h2>
