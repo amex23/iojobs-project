@@ -186,7 +186,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             IOJobs &copy; {new Date().getFullYear()} - Crafted with{' '}
                             <span role="img" aria-label="Love">❤️</span>{' '}
                             by the IOJobs team.
-                            &nbsp;<a href="">Contact Us</a>
+                            &nbsp;<Link href={route('contact-us')}>Contact Us</Link>
                         </footer>
                     </div>
                 </div>

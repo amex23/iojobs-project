@@ -16,7 +16,6 @@ use App\Http\Controllers\Jobseeker\MessageController as JobseekerMessageControll
 use App\Http\Controllers\Recruiter\MessageController as RecruiterMessageController;
 use App\Http\Controllers\MessageController;
 
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -57,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 Route::middleware(['auth', 'role:jobrecruiter'])->prefix('recruiter')->name('recruiter.')->group(function () {
     Route::get('/dashboard', [RecruiterDashboardController::class, 'index'])->name('dashboard');
     Route::get('/jobs/all', [RecruiterJobPostController::class, 'allJobs'])->name('jobs.all');
+    Route::get('/contact-admin', [RecruiterDashboardController::class, 'contactAdmin'])->name('contact.admin');
+    Route::post('/contact-admin', [RecruiterDashboardController::class, 'sendToAdmin'])->name('contact.admin.send');
     Route::resource('jobs', RecruiterJobPostController::class)
         ->except(['show'])
         ->parameters(['jobs' => 'jobPost']);
@@ -80,5 +81,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages/{thread}', [MessageController::class, 'show'])->name('messages.show');
     Route::post('/messages/{thread}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 });
+
+Route::get('/contact-us', function () {
+    return Inertia::render('ContactUs');
+})->name('contact-us');
+
+Route::get('/messages', [AdminDashboardController::class, 'messages'])->name('messages.index');
 
 require __DIR__.'/auth.php';

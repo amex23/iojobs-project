@@ -52,12 +52,14 @@ export default function Index({ jobs, appliedJobIds = [] }) {
                                                 <Link
                                                     href={route('jobposts.show', job.id)}
                                                     className={`px-4 py-2 rounded text-sm shrink-0 font-bold text-white ml-4 ${
-                                                        hasApplied
-                                                            ? 'bg-[#00D100] hover:bg-green-700'
-                                                            : 'bg-[#474747] hover:bg-[#3B3B3B]'
+                                                        role === 'admin'
+                                                            ? 'bg-[#474747] hover:bg-[#3B3B3B]'
+                                                            : hasApplied
+                                                                ? 'bg-[#00D100] hover:bg-green-700'
+                                                                : 'bg-[#474747] hover:bg-[#3B3B3B]'
                                                     }`}
                                                 >
-                                                    {hasApplied ? '✓ Applied' : 'Apply'}
+                                                    {role === 'admin' ? 'View' : hasApplied ? '✓ Applied' : 'Apply'}
                                                 </Link>
                                             </div>
                                         </div>

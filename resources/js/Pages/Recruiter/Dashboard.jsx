@@ -52,6 +52,13 @@ export default function Dashboard() {
                     >
                         🔍 See All Jobs
                     </Link>
+
+                    <Link
+                        href={route('recruiter.contact.admin')}
+                        className="block text-white px-4 py-3 rounded bg-[#474747] hover:bg-[#3B3B3B]"
+                    >
+                        📬 Contact Admin
+                    </Link>
                 </div>
             </div>
 
