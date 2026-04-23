@@ -29,12 +29,21 @@ export default function Show({ job }) {
             <div className="flex flex-col w-full">
                 <JobseekerHeader jobs={[]} />
                 <div className="flex flex-col items-start">
-                <Link href={route('jobseeker.dashboard')} className="text-sm text-gray-500 underline">
-                ← Back to Jobs
-            </Link>
+                <Link 
+                    href={
+                        auth.user.role === 'admin' 
+                            ? route('admin.dashboard')
+                            : auth.user.role === 'jobrecruiter'
+                            ? route('recruiter.dashboard')
+                            : route('jobseeker.dashboard')
+                    } 
+                    className="text-sm text-gray-500 underline"
+                >
+                    ← Back to Dashboard
+                </Link>
 
                 <div className="flex justify-start w-full min-h-screen">
-                    <div className="mt-6 shadow-md bg-white p-7 rounded-sm w-1/2">
+                    <div className="mt-6 shadow-md bg-white p-7 rounded-sm w-full lg:w-1/2">
                     <h1 className="text-2xl font-bold">{job.title}</h1>
                     <p className="text-gray-500 mt-2">
                         Posted by <span className="font-medium">{job.recruiter.name}</span>
@@ -65,7 +74,7 @@ export default function Show({ job }) {
                                         Message to <span className="text-green-600">{job.recruiter.name}</span>
                                     </p>
                                     <textarea
-                                        className="w-full border rounded-lg p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-400 bg-white"
+                                        className="w-full border rounded-lg p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-400 bg-white h-[250px]"
                                         rows={4}
                                         placeholder="Write your message to the recruiter..."
                                         value={data.body}

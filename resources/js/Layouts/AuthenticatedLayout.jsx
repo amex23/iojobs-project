@@ -21,7 +21,7 @@ export default function AuthenticatedLayout({ header, children }) {
             
 
             <div className="relative w-full flex justify-center">
-                <div className="w-full max-w-2xl px-6 lg:max-w-7xl">
+                <div className="w-full max-w-2xl px-0 lg:px-6 lg:max-w-7xl">
                     {user.role === 'admin' && <AllHeader />}
                     {user.role === 'jobseeker' && <JobseekerHeader jobs={[]} />}
                     {user.role === 'jobrecruiter' && <RecruiterHeader />}
@@ -35,6 +35,23 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div> */}
                 </header>
             )}
+
+            <div className="relative w-full flex justify-center">
+                <div className="w-full max-w-2xl px-0 lg:px-6 lg:max-w-7xl">
+                    <Link 
+                        href={
+                            user.role === 'admin'
+                                ? route('admin.dashboard')
+                                : user.role === 'jobrecruiter'
+                                ? route('recruiter.dashboard')
+                                : route('jobseeker.dashboard')
+                        } 
+                        className="flex items-center gap-1 text-sm text-gray-500 underline"
+                    >
+                        ← Back to Dashboard
+                    </Link>
+                </div>
+            </div>
 
             <main>{children}</main>
         </div>

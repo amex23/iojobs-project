@@ -21,7 +21,7 @@ export default function Index({ jobs, appliedJobIds = [] }) {
     const paginated = jobs.slice((currentPage - 1) * perPage, currentPage * perPage);
 
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
+        <div className="px-4 md:px-12 py-8 md:py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
             <div className="flex flex-col w-full">
                 <JobseekerHeader jobs={jobs} />
                 <div className="w-full mx-auto mt-4">
@@ -36,32 +36,30 @@ export default function Index({ jobs, appliedJobIds = [] }) {
                         <p className="text-gray-500">No approved jobs available.</p>
                     ) : (
                         <>
-                            <div className="space-y-4 w-1/3">
+                            <div className="space-y-4 w-full lg:w-1/3">
                                 {paginated.map(job => {
                                     const hasApplied = normalizedAppliedIds.includes(job.id);
                                     return (
-                                        <div key={job.id} className="bg-white rounded p-4 shadow flex items-start justify-between w-full">
-                                            <div className="flex items-center justify-between w-full">
-                                                <div>
-                                                    <h2 className="text-lg font-semibold">{job.title}</h2>
-                                                    <p className="text-sm text-gray-500 mt-1">
-                                                        {job.recruiter.name} · {job.location} · {job.salary_range}
-                                                    </p>
-                                                    <p className="text-sm text-gray-400">{job.category}</p>
-                                                </div>
-                                                <Link
-                                                    href={route('jobposts.show', job.id)}
-                                                    className={`px-4 py-2 rounded text-sm shrink-0 font-bold text-white ml-4 ${
-                                                        role === 'admin'
-                                                            ? 'bg-[#474747] hover:bg-[#3B3B3B]'
-                                                            : hasApplied
-                                                                ? 'bg-[#00D100] hover:bg-green-700'
-                                                                : 'bg-[#474747] hover:bg-[#3B3B3B]'
-                                                    }`}
-                                                >
-                                                    {role === 'admin' ? 'View' : hasApplied ? '✓ Applied' : 'Apply'}
-                                                </Link>
+                                        <div key={job.id} className="bg-white rounded p-4 shadow flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-3">
+                                            <div className="flex-1">
+                                                <h2 className="text-lg font-semibold">{job.title}</h2>
+                                                <p className="text-sm text-gray-500 mt-1">
+                                                    {job.recruiter.name} · {job.location} · {job.salary_range}
+                                                </p>
+                                                <p className="text-sm text-gray-400">{job.category}</p>
                                             </div>
+                                            <Link
+                                                href={route('jobposts.show', job.id)}
+                                                className={`px-4 py-2 rounded text-sm shrink-0 font-bold text-white self-start sm:self-center ${
+                                                    role === 'admin'
+                                                        ? 'bg-[#474747] hover:bg-[#3B3B3B]'
+                                                        : hasApplied
+                                                            ? 'bg-[#00D100] hover:bg-green-700'
+                                                            : 'bg-[#474747] hover:bg-[#3B3B3B]'
+                                                }`}
+                                            >
+                                                {role === 'admin' ? 'View' : hasApplied ? '✓ Applied' : 'Apply'}
+                                            </Link>
                                         </div>
                                     );
                                 })}
@@ -69,7 +67,7 @@ export default function Index({ jobs, appliedJobIds = [] }) {
 
                             {/* Pagination */}
                             {totalPages > 1 && (
-                                <div className="flex items-center gap-2 mt-6">
+                                <div className="flex items-center gap-2 mt-6 flex-wrap">
                                     <button
                                         onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
                                         disabled={currentPage === 1}
