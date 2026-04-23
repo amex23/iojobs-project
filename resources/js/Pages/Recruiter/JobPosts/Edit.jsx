@@ -21,10 +21,10 @@ export default function Edit({ job }) {
         <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl lg:h-[150vh] flex flex-col justify-between">
       
                 <RecruiterHeader></RecruiterHeader>
-                <div className="bg-white px-8 py-12 w-full flex justify-center mx-auto flex-col items-center shadow-md rounded-sm">
+                <div className="bg-white px-4 lg:px-8 py-12 w-full flex justify-center mx-auto flex-col items-center shadow-md rounded-sm">
                     <h1 className="text-2xl font-bold mb-6">Edit Job Post</h1>
 
-                    <form onSubmit={submit} className="space-y-4 w-[70%] py-3 px-3 rounded-lg bg-[#545454]">
+                    <form onSubmit={submit} className="space-y-4 w-full lg:w-[70%] py-3 px-3 rounded-lg bg-[#545454]">
                         <div>
                             <label className="block text-sm font-medium text-white">Job Title</label>
                             <input type="text" value={data.title} onChange={e => setData('title', e.target.value)}

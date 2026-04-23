@@ -17,11 +17,17 @@ use App\Http\Controllers\Recruiter\MessageController as RecruiterMessageControll
 use App\Http\Controllers\MessageController;
 
 Route::get('/', function () {
+    $featuredJobs = \App\Models\JobPost::where('featured', true)
+    ->with('recruiter:id,name')
+    ->latest()
+    ->get();
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'featuredJobs' => $featuredJobs,
     ]);
 });
 
@@ -43,9 +49,11 @@ Route::middleware('auth')->group(function () {
 // Admin
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/messages', [AdminDashboardController::class, 'messages'])->name('messages.index');
     Route::get('/jobs', [AdminJobPostController::class, 'index'])->name('jobs.index');
     Route::patch('/jobs/{jobPost}/approve', [AdminJobPostController::class, 'approve'])->name('jobs.approve');
     Route::patch('/jobs/{jobPost}/reject', [AdminJobPostController::class, 'reject'])->name('jobs.reject');
+    Route::patch('/jobs/{jobPost}/feature', [AdminJobPostController::class, 'feature'])->name('jobs.feature');
     Route::get('/jobs/{jobPost}/edit', [AdminJobPostController::class, 'edit'])->name('jobs.edit');
     Route::patch('/jobs/{jobPost}', [AdminJobPostController::class, 'update'])->name('jobs.update');
     Route::delete('/jobs/{jobPost}', [AdminJobPostController::class, 'destroy'])->name('jobs.destroy');
@@ -85,7 +93,5 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/contact-us', function () {
     return Inertia::render('ContactUs');
 })->name('contact-us');
-
-Route::get('/messages', [AdminDashboardController::class, 'messages'])->name('messages.index');
 
 require __DIR__.'/auth.php';

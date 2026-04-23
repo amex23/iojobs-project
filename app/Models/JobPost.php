@@ -15,6 +15,7 @@ class JobPost extends Model
         'category',
         'status',
         'approval_status',
+        'featured',
     ];
 
     public function recruiter()

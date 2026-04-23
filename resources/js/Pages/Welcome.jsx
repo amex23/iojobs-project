@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs = [] }) {
     const handleImageError = () => {
         document
             .getElementById('screenshot-container')
@@ -23,7 +23,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <h1 className='font-bold text-2xl text-black'>IOJobs</h1>
                             </div>
                             <div className="flex lg:col-start-2 lg:justify-center"></div>
-                            <nav className="-mx-3 flex flex-1 justify-end">
+                            <nav className="flex flex-1 justify-end">
                                 {auth.user ? (
                                     <Link
                                         href={route('dashboard')}
@@ -134,7 +134,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </div>
 
                                 {/* Job Cards */}
-                                <div className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 flex-col lg:flex-row">
+                                {/* <div className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 flex-col lg:flex-row">
                                     <div className="pt-3 sm:pt-5 w-full lg:w-[75%]">
                                         <h2 className="text-xl font-semibold dark:text-white">Web Developer</h2>
                                         <p className="mt-4 text-sm/relaxed">
@@ -177,7 +177,38 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                                         </svg>
                                     </a>
-                                </div>
+                                </div> */}
+
+                                {/* Featured Job Cards */}
+                                {featuredJobs.map(job => (
+                                    <div key={job.id} className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 flex-col lg:flex-row">
+                                        <div className="pt-3 sm:pt-5 w-full lg:w-[75%]">
+                                            <h2 className="text-xl font-semibold dark:text-white">{job.title}</h2>
+                                            <p className="text-xs text-gray-400 mt-1">{job.recruiter?.name} · {job.location}</p>
+                                            <p className="mt-4 text-sm/relaxed text-gray-600">
+                                                {job.description?.length > 150
+                                                    ? job.description.substring(0, 150) + '...'
+                                                    : job.description}
+                                            </p>
+                                        </div>
+                                        <Link
+                                            href={route('login')}
+                                            className='self-center lg:self-start lg:mt-5 w-auto lg:w-[25%] flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-2 rounded-md'
+                                        >
+                                            <span className='text-sm md:text-md'>Apply Now</span>
+                                            <svg className="size-6 shrink-0 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                            </svg>
+                                        </Link>
+                                    </div>
+                                ))}
+
+                                {/* Fill remaining slots with placeholder if less than 3 */}
+                                {Array.from({ length: Math.max(0, 3 - featuredJobs.length) }).map((_, i) => (
+                                    <div key={`placeholder-${i}`} className="flex items-center justify-center rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 min-h-[120px]">
+                                        <p className="text-gray-400 text-sm">More jobs coming soon...</p>
+                                    </div>
+                                ))}
 
                             </div>
                         </main>

@@ -100,4 +100,18 @@ class JobPostController extends Controller
 
         return back()->with('success', 'Message sent!');
     }
+
+
+    public function feature(\App\Models\JobPost $jobPost)
+    {
+        $featuredCount = \App\Models\JobPost::where('featured', true)->count();
+
+        if (!$jobPost->featured && $featuredCount >= 3) {
+            return back()->withErrors(['featured' => 'Maximum 3 featured jobs allowed.']);
+        }
+
+        $jobPost->update(['featured' => !$jobPost->featured]);
+
+        return back()->with('success', 'Job feature status updated!');
+    }
 }

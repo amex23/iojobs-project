@@ -55,6 +55,15 @@ export default function Index({ jobs }) {
                                 </div>
 
                                 <div className="flex gap-2 flex-wrap justify-end">
+                                    <button
+                                            onClick={() => router.patch(route('admin.jobs.feature', job.id))}
+                                            className={`px-4 py-2 rounded text-sm text-white ${
+                                                job.featured ? 'bg-purple-700 hover:bg-purple-800' : 'bg-purple-500 hover:bg-purple-600'
+                                            }`}
+                                        >
+                                            {job.featured ? '★ Featured' : '☆ Feature'}
+                                        </button>
+
                                     {job.approval_status === 'pending' && (
                                         <>
                                             <button
