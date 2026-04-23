@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('/messages', [AdminDashboardController::class, 'messages'])->name('messages.index');
+    Route::get('/users', [AdminDashboardController::class, 'users'])->name('users.index');
     Route::get('/jobs', [AdminJobPostController::class, 'index'])->name('jobs.index');
     Route::patch('/jobs/{jobPost}/approve', [AdminJobPostController::class, 'approve'])->name('jobs.approve');
     Route::patch('/jobs/{jobPost}/reject', [AdminJobPostController::class, 'reject'])->name('jobs.reject');
@@ -93,5 +94,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/contact-us', function () {
     return Inertia::render('ContactUs');
 })->name('contact-us');
+
+
 
 require __DIR__.'/auth.php';

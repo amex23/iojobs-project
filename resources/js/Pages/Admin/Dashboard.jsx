@@ -21,24 +21,31 @@ export default function Dashboard() {
                 </div>
                 </div>
 
-                <div className="flex items-center gap-x-5 justify-center w-full">
+                <div className="rounded-sm bg-white shadow-md h-[500px] py-12 flex items-start gap-x-5 justify-center w-full flex-col lg:flex-row gap-5 lg:gap-0 px-5 lg:gap-5 lg:px-0">
                     <Link
                         href={route('admin.jobs.index')}
-                        className="block bg-blue-600 text-white px-4 py-3 rounded hover:bg-blue-700"
+                        className="w-full lg:w-auto block bg-blue-600 text-white px-4 py-3 rounded hover:bg-blue-700"
                     >
                         📋 Review Job Posts
                     </Link>
                     <Link
                         href={route('jobposts.index')}
-                        className="block bg-gray-600 text-white px-4 py-3 rounded hover:bg-gray-700"
+                        className="w-full lg:w-auto block bg-gray-600 text-white px-4 py-3 rounded hover:bg-gray-700"
                     >
                         🌐 View All Approved Jobs
                     </Link>
                     <Link
                         href={route('profile.edit')}
-                        className="block bg-[#9CCAF0] text-white px-4 py-3 rounded hover:bg-[#76AFDE]"
+                        className="w-full lg:w-auto block bg-[#9CCAF0] text-white px-4 py-3 rounded hover:bg-[#76AFDE]"
                     >
                         🪪 Update Account/Profile 
+                    </Link>
+
+                    <Link
+                        href={route('admin.users.index')}
+                        className="w-full lg:w-auto block bg-indigo-600 text-white px-4 py-3 rounded hover:bg-indigo-700"
+                    >
+                        👥 See All Users
                     </Link>
                 </div>
             </div>
