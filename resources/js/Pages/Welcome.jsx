@@ -14,7 +14,18 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
 
     return (
         <>
-            <Head title="Welcome" />
+            <Head>
+                <title>IOJobs - Online Jobs Philippines | Hire Remote Professionals</title>
+                <meta name="description" content="IOJobs is the top online job portal in the Philippines. Connect employers with skilled Filipino remote professionals, virtual assistants, and workers." />
+                <meta name="keywords" content="online jobs philippines, remote jobs philippines, virtual assistant philippines, hire filipino workers, work from home philippines, iojobs" />
+                <meta name="author" content="IOJobs" />
+                <meta property="og:title" content="IOJobs - Online Jobs Philippines" />
+                <meta property="og:description" content="Find and hire top remote talent in the Philippines." />
+                <meta property="og:url" content="https://iojobs.net" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:title" content="IOJobs - Online Jobs Philippines" />
+                <meta name="twitter:description" content="Find and hire top remote talent in the Philippines." />
+            </Head>
             <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
