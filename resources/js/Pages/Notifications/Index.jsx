@@ -65,13 +65,19 @@ export default function Index({ notifications }) {
                                             <p className="font-semibold">{notif.data.title}</p>
                                             <p className="text-sm text-gray-600 mt-1">{notif.data.body ?? notif.data.preview}</p>
                                             {notif.data.url && (
-                                                <Link
-                                                    href={notif.data.url}
-                                                    className="text-xs text-blue-600 underline mt-1 inline-block"
-                                                >
-                                                    View →
-                                                </Link>
-                                            )}
+                                                    <Link
+                                                        href={(() => {
+                                                            try {
+                                                                return new URL(notif.data.url).pathname;
+                                                            } catch {
+                                                                return notif.data.url;
+                                                            }
+                                                        })()}
+                                                        className="text-xs text-blue-600 underline mt-1 inline-block"
+                                                    >
+                                                        View →
+                                                    </Link>
+                                                )}
                                             <p className="text-xs text-gray-400 mt-2">
                                                 {new Date(notif.created_at).toLocaleString()}
                                             </p>
