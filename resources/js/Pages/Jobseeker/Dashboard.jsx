@@ -59,8 +59,8 @@ export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
                 <div className="flex flex-col lg:flex-row mt-2 gap-4">
 
                     {/* Filter Sidebar */}
-                    <div className={`${showFilter ? 'flex' : 'hidden'} lg:flex flex-col bg-[#292929] shadow-md p-4 rounded gap-1 lg:self-start lg:sticky lg:top-4 lg:w-[30%] w-full`}>
-                        <span className='font-bold text-white mb-2'>Filter by Category</span>
+                    <div className={`${showFilter ? 'flex' : 'hidden'} lg:flex flex-col bg-white shadow-md p-4 rounded gap-1 lg:self-start lg:sticky lg:top-4 lg:w-[30%] w-full`}>
+                        <span className='font-bold text-black mb-2'>Filter by Category</span>
                         {CATEGORIES.map(cat => (
                             <button
                                 key={cat}
@@ -71,8 +71,8 @@ export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
                                 }}
                                 className={`text-left px-3 py-1 rounded text-sm ${
                                     selectedCategory === cat
-                                        ? 'bg-white text-black font-bold'
-                                        : 'text-white hover:bg-gray-600'
+                                        ? 'bg-white bg-gray-300 text-black font-bold'
+                                        : 'text-black hover:bg-gray-600'
                                 }`}
                             >
                                 {cat}
