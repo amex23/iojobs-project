@@ -1,5 +1,6 @@
 import { Link, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
+import AllHeader from '@/Components/AllHeader';
 
 export default function Index({ jobs }) {
     const [composingFor, setComposingFor] = useState(null); // job.id being messaged
@@ -29,7 +30,8 @@ export default function Index({ jobs }) {
     };
 
     return (
-        <div className="p-8 max-w-5xl mx-auto">
+        <div className="p-8 max-w-7xl mx-auto">
+            <AllHeader />
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-2xl font-bold">Manage Job Posts</h1>
                 <Link href={route('admin.dashboard')} className="text-sm text-gray-500 underline">
@@ -42,7 +44,7 @@ export default function Index({ jobs }) {
             ) : (
                 <div className="space-y-4">
                     {jobs.map(job => (
-                        <div key={job.id} className="border rounded-lg p-5">
+                        <div key={job.id} className="border bg-white rounded-lg p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <h2 className="font-semibold text-lg">{job.title}</h2>
