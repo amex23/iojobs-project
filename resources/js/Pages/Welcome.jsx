@@ -72,8 +72,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                         id="screenshot-container"
                                         className="relative flex w-full flex-1 items-stretch"
                                     >
-                                        <div className='flex flex-col gap-y-5 lg:gap-y-28'>
-                                            <h1 className="pd text-black text-4xl xl:text-5xl">
+                                        <div className='flex flex-col text-center lg:text-start gap-y-5 lg:gap-y-28'>
+                                            <h1 className="pd text-black text-4xl xl:text-6xl">
                                                 Hire the best
                                                 Remote/Local Professionals in the Philippines
                                             </h1>
