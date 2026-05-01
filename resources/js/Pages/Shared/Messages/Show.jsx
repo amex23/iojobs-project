@@ -25,7 +25,7 @@ export default function Show({ thread }) {
     };
 
     return (
-    <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen gap-y-5">    
+    <div className="px-4 px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between min-h-screen gap-y-5">    
 
        
         <div className="w-full">
@@ -49,7 +49,7 @@ export default function Show({ thread }) {
          </div>
 
             <div className='justify-start w-full flex'>
-                <div className="w-1/2 mt-4 shadow-md px-7 py-7 rounded-lg bg-white border-gray-300">
+                <div className="w-full lg:w-1/2 mt-4 shadow-md px-7 py-7 rounded-lg bg-white border-gray-300">
             {/* Header */}
 
             

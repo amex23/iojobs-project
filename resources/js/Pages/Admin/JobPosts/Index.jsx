@@ -1,6 +1,7 @@
 import { Link, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 import AllHeader from '@/Components/AllHeader';
+import Footer from '@/Components/Footer';
 
 export default function Index({ jobs }) {
     const [composingFor, setComposingFor] = useState(null); // job.id being messaged
@@ -141,6 +142,8 @@ export default function Index({ jobs }) {
                     ))}
                 </div>
             )}
+
+            {/* <Footer /> */}
         </div>
     );
 }

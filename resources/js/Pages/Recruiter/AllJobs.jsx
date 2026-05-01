@@ -44,7 +44,7 @@ export default function AllJobs({ jobs = [] }) {
                 {/* Mobile Filter Toggle */}
                 <button
                     onClick={() => setShowFilter(!showFilter)}
-                    className="lg:hidden mb-3 px-4 py-2 bg-[#292929] text-white rounded text-sm font-bold w-fit"
+                    className="lg:hidden mb-3 px-4 py-2 bg-[#474747] text-white rounded text-sm font-bold w-fit"
                 >
                     {showFilter ? '✕ Hide Filters' : '☰ Filter by Category'}
                 </button>

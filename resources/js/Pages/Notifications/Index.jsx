@@ -29,7 +29,7 @@ export default function Index({ notifications }) {
     };
 
     return (
-    <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between gap-y-5">    
+    <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between gap-y-5">    
         <div className='flex w-full flex-col gap-y-5 min-h-[80vh]'>
             {role === 'admin' && <AllHeader jobs={[]} />}
             {role === 'jobseeker' && <JobseekerHeader jobs={[]} />}

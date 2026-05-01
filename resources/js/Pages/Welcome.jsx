@@ -157,7 +157,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                         </div>
                                         <Link
                                             href={route('login')}
-                                            className='self-center lg:self-start lg:mt-5 w-auto lg:w-[25%] flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-2 rounded-md'
+                                            className='self-center lg:self-start lg:mt-5 w-auto lg:w-[25%] flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-4 lg:px-2 rounded-md'
                                         >
                                             <span className='text-sm md:text-md'>Apply Now</span>
                                             <svg className="size-6 shrink-0 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5">

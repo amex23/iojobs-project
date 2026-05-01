@@ -12,7 +12,7 @@ export default function Index({ jobs }) {
     };
 
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
+        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
 
             <div className="flex flex-col w-full">
                 <RecruiterHeader></RecruiterHeader>

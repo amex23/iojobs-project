@@ -4,7 +4,7 @@ import Footer from '@/Components/Footer';
 
 export default function Users({ recruiters, jobseekers }) {
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
+        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
             <div className="flex flex-col w-full">
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-xl font-bold">Admin Dashboard 🛡️ </h1>
