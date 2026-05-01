@@ -107,7 +107,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                                 </div>
                                             </div>
                                             <span className="flex justify-center text-center w-full">
-                                                <h2 className="text-lg font-semibold text-black dark:text-white">About Us</h2>
+                                                <h2 className="text-lg font-semibold text-black dark:text-white uppercase lg:capitalize">About Us</h2>
                                             </span>
                                             <p className="text-sm text-gray-500 text-center">Learn more about IOJobs and our mission in the Philippines.</p>
                                         </div>
@@ -120,7 +120,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                                 </div>
                                             </div>
                                             <span className="w-full text-center">
-                                                <h2 className="text-lg font-semibold text-black dark:text-white">Why IOJobs</h2>
+                                                <h2 className="text-lg font-semibold text-black dark:text-white uppercase lg:capitalize">Why IOJobs</h2>
                                             </span>
                                             <p className="text-sm text-gray-500 text-center">Top remote talent in the Philippines, ready to work for you.</p>
                                         </div>
@@ -135,7 +135,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                                 </div>
                                             </div>
                                             <span className="flex justify-center w-full">
-                                                <h2 className="text-lg font-semibold text-black dark:text-white">Get Hired</h2>
+                                                <h2 className="text-lg font-semibold text-black dark:text-white uppercase lg:capitalize">Get Hired</h2>
                                             </span>
                                             <p className="text-sm text-gray-500 text-center">Find your dream job today and connect with top employers.</p>
                                         </div>
