@@ -60,7 +60,7 @@ export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
 
                     {/* Filter Sidebar */}
                     <div className={`${showFilter ? 'flex' : 'hidden'} lg:flex flex-col bg-white shadow-md p-4 rounded gap-1 lg:self-start lg:sticky lg:top-4 lg:w-[30%] w-full`}>
-                        <span className='font-bold text-black mb-2'>Filter by Category</span>
+                        <span className='mb-2'>Filter by Category</span>
                         {CATEGORIES.map(cat => (
                             <button
                                 key={cat}
