@@ -20,7 +20,7 @@ export default function Create() {
     
 
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl lg:h-[150vh] flex flex-col justify-between">
+        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl lg:h-[150vh] flex flex-col justify-between">
             <RecruiterHeader></RecruiterHeader>
             <div className="bg-white px-3 lg:px-8 py-12 w-full flex justify-center mx-auto flex-col items-center shadow-md rounded-sm">
             <h1 className="text-2xl font-bold mb-6">Post a New Job</h1>
