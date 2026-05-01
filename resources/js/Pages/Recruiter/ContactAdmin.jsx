@@ -17,7 +17,14 @@ export default function ContactAdmin({ admin }) {
         <div className="px-4 lg:px-12 px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
             <RecruiterHeader />
 
+          
             <div className="flex flex-col items-start">
+                <div className="mb-4">
+                        <Link href={route('recruiter.dashboard')} className="text-sm text-gray-500 underline">
+                            ← Back to Dashboard
+                        </Link>
+                </div>
+
                 <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
                     <h2 className="text-2xl font-bold mb-2">📬 Contact Admin</h2>
                     <p className="text-sm text-gray-500 mb-6">
@@ -46,11 +53,7 @@ export default function ContactAdmin({ admin }) {
                         </button>
                     </div>
 
-                    <div className="mt-4">
-                        <Link href={route('recruiter.dashboard')} className="text-sm text-gray-500 underline">
-                            ← Back to Dashboard
-                        </Link>
-                    </div>
+                    
                 </div>
             </div>
 

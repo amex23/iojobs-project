@@ -12,10 +12,16 @@ export default function Index({ jobs }) {
     };
 
     return (
-        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen flex flex-col gap-y-5">
+        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl min-h-screen justify-evenly flex flex-col gap-y-5">
 
             <div className="flex flex-col w-full">
                 <RecruiterHeader></RecruiterHeader>
+                <div className="mt-6">
+                        <Link href={route('recruiter.dashboard')} className="text-sm text-gray-500 underline">
+                            ← Back to Dashboard
+                        </Link>
+                    </div>
+
                 <div className="bg-white shadow-md rounded-sm p-6 mt-6">
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-2xl font-bold">My Job Posts</h1>
@@ -75,15 +81,11 @@ export default function Index({ jobs }) {
                         </div>
                     )}
 
-                    <div className="mt-6">
-                        <Link href={route('recruiter.dashboard')} className="text-sm text-gray-500 underline">
-                            ← Back to Dashboard
-                        </Link>
-                    </div>
+                    
                 </div>
             </div>
 
-            <Footer></Footer>
+            <Footer className="mt-4"></Footer>
         </div>
     );
 }

@@ -24,7 +24,7 @@ export default function Show({ job }) {
     };
 
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between h-auto">
+        <div className="px-4 lg:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl flex flex-col justify-between h-auto">
 
             <div className="flex flex-col w-full">
                 <JobseekerHeader jobs={[]} />
