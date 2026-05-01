@@ -95,6 +95,6 @@ Route::get('/contact-us', function () {
     return Inertia::render('ContactUs');
 })->name('contact-us');
 
-
+Route::post('/contact-us', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 require __DIR__.'/auth.php';
