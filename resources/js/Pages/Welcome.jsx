@@ -26,7 +26,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                 <meta name="twitter:title" content="IOJobs - Online Jobs Philippines" />
                 <meta name="twitter:description" content="Find and hire top remote talent in the Philippines." />
             </Head>
-            <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
+            <div className="bg-[#FAF9F5] dark:text-white/50">
                 <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#e5e7eb] selection:text-black">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                         <header className="flex lg:grid items-center gap-2 py-10 lg:grid-cols-3">
