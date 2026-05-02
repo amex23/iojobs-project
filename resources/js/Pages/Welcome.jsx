@@ -30,8 +30,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                 <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#e5e7eb] selection:text-black">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                         <header className="flex lg:grid items-center gap-2 py-10 lg:grid-cols-3">
-                            <div>
-                                <h1 className='font-bold text-2xl text-black'>IOJobs</h1>
+                            <div className='flex items-center gap-1'>
+                                <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="" />
+                                <h1 className='font-bold text-2xl text-black'>
+                                    jobs
+                                </h1>
                             </div>
                             <div className="flex lg:col-start-2 lg:justify-center"></div>
                             <nav className="flex flex-1 justify-end">

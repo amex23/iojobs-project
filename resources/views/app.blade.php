@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
         <link rel="canonical" href="https://iojobs.net" />
 
-        <link rel="icon" type="image/png" href="/io.svg">
+        <link rel="icon" type="image/png" href="/io-logo2.png">
 
         <!-- Scripts -->
         @routes
