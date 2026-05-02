@@ -31,9 +31,9 @@ export default function Index({ jobs }) {
     };
 
     return (
-        <div className="p-8 max-w-7xl mx-auto">
+        <div className="px-4 py-8 lg:py-8 lg:px-8 max-w-7xl mx-auto">
             <AllHeader />
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex gap-3 items-center justify-between mb-6">
                 <h1 className="text-2xl font-bold">Manage Job Posts</h1>
                 <Link href={route('admin.dashboard')} className="text-sm text-gray-500 underline">
                     ← Dashboard
@@ -57,7 +57,7 @@ export default function Index({ jobs }) {
                                     </span>
                                 </div>
 
-                                <div className="flex gap-2 flex-wrap justify-end">
+                                <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-end">
                                     <button
                                             onClick={() => router.patch(route('admin.jobs.feature', job.id))}
                                             className={`px-4 py-2 rounded text-sm text-white ${
@@ -94,7 +94,7 @@ export default function Index({ jobs }) {
                                     </button>
                                     <Link
                                         href={route('admin.jobs.edit', job.id)}
-                                        className="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500 text-sm"
+                                        className="bg-yellow-400 text-center text-white px-4 py-2 rounded hover:bg-yellow-500 text-sm"
                                     >
                                         Edit
                                     </Link>

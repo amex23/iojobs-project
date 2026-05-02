@@ -4,10 +4,10 @@ import Footer from '@/Components/Footer';
 
 export default function Dashboard() {
     return (
-        <div className="px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl h-screen flex flex-col justify-between h-screen">
+        <div className="px-4 md:px-12 py-12 max-w-2xl mx-auto lg:max-w-7xl h-screen flex flex-col justify-between h-screen">
             <div className='flex flex-col'>
                 <div className="flex items-center justify-between mb-6">
-                <h1 className="text-xl font-bold">Admin Dashboard 🛡️</h1>
+                <h1 className="text-md lg:text-xl font-bold">Admin Dashboard 🛡️</h1>
                 <div className="flex items-center gap-4">
                     <NotificationBell />
                     <Link
