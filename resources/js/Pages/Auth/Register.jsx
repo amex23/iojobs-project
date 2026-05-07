@@ -46,7 +46,7 @@ export default function Register() {
             post(route('register'), {
                 onFinish: () => reset('password', 'password_confirmation'),
             });
-        }, 3000);
+        }, 1000);
     };
 
     if (showLoading) return <LoadingScreen />;

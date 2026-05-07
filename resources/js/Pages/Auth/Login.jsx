@@ -45,7 +45,7 @@ export default function Login({ status, canResetPassword }) {
             post(route('login'), {
                 onFinish: () => reset('password'),
             });
-        }, 3000);
+        }, 1000);
     };
 
     if (showLoading) return <LoadingScreen />;
