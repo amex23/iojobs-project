@@ -44,7 +44,7 @@ export default function Index({ jobs, appliedJobIds = [] }) {
                                             <div className="flex-1">
                                                 <h2 className="text-lg font-semibold">{job.title}</h2>
                                                 <p className="text-sm text-gray-500 mt-1">
-                                                    {job.recruiter.name} · {job.location} · {job.salary_range}
+                                                    {job.recruiter.name} · {job.location} · ₱{job.salary_range}
                                                 </p>
                                                 <p className="text-sm text-gray-400">{job.category}</p>
                                             </div>

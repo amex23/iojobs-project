@@ -92,7 +92,7 @@ export default function Dashboard({ jobs = [], appliedJobIds = [] }) {
                                         <div className="flex-1 flex flex-col gap-y-2">
                                             <h3 className="font-bold text-lg">{job.title}</h3>
                                             <p className="text-sm text-gray-500">
-                                                {job.recruiter?.name} · {job.location} · {job.salary_range}
+                                                {job.recruiter?.name} · {job.location} · ₱{job.salary_range}
                                             </p>
                                             <span className="inline-block text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded w-fit">
                                                 {job.category}
