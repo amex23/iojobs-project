@@ -4,6 +4,29 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
+import { useState, useEffect } from 'react';
+
+function LoadingScreen() {
+    const [dots, setDots] = useState('');
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDots(d => d.length >= 3 ? '' : d + '.');
+        }, 400);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+            <div className='flex items-center gap-1'>
+                <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="IOJobs Logo" />
+                <h1 className='font-bold text-2xl text-black'>
+                    jobs<span className="tracking-widest">{dots}</span>
+                </h1>
+            </div>
+        </div>
+    );
+}
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -14,13 +37,19 @@ export default function Register() {
         role: '',
     });
 
+    const [showLoading, setShowLoading] = useState(false);
+
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('register'), {
-            onFinish: () => reset('password', 'password_confirmation'),
-        });
+        setShowLoading(true);
+        setTimeout(() => {
+            post(route('register'), {
+                onFinish: () => reset('password', 'password_confirmation'),
+            });
+        }, 1000);
     };
+
+    if (showLoading) return <LoadingScreen />;
 
     return (
         <GuestLayout>
@@ -87,7 +116,6 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                {/* Role */}
                 <div className="mt-4">
                     <InputLabel htmlFor="role" value="I am a..." />
                     <select
@@ -112,7 +140,6 @@ export default function Register() {
                     >
                         Already registered?
                     </Link>
-
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Register
                     </PrimaryButton>

@@ -5,6 +5,29 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
+import { useState, useEffect } from 'react';
+
+function LoadingScreen() {
+    const [dots, setDots] = useState('');
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDots(d => d.length >= 3 ? '' : d + '.');
+        }, 400);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+            <div className='flex items-center gap-1'>
+                <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="IOJobs Logo" />
+                <h1 className='font-bold text-2xl text-black'>
+                    jobs<span className="tracking-widest">{dots}</span>
+                </h1>
+            </div>
+        </div>
+    );
+}
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -13,13 +36,19 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
+    const [showLoading, setShowLoading] = useState(false);
+
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('login'), {
-            onFinish: () => reset('password'),
-        });
+        setShowLoading(true);
+        setTimeout(() => {
+            post(route('login'), {
+                onFinish: () => reset('password'),
+            });
+        }, 1000);
     };
+
+    if (showLoading) return <LoadingScreen />;
 
     return (
         <GuestLayout>
@@ -34,7 +63,6 @@ export default function Login({ status, canResetPassword }) {
             <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
-
                     <TextInput
                         id="email"
                         type="email"
@@ -45,13 +73,11 @@ export default function Login({ status, canResetPassword }) {
                         isFocused={true}
                         onChange={(e) => setData('email', e.target.value)}
                     />
-
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
-
                     <TextInput
                         id="password"
                         type="password"
@@ -61,7 +87,6 @@ export default function Login({ status, canResetPassword }) {
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
                     />
-
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
@@ -70,13 +95,9 @@ export default function Login({ status, canResetPassword }) {
                         <Checkbox
                             name="remember"
                             checked={data.remember}
-                            onChange={(e) =>
-                                setData('remember', e.target.checked)
-                            }
+                            onChange={(e) => setData('remember', e.target.checked)}
                         />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
+                        <span className="ms-2 text-sm text-gray-600">Remember me</span>
                     </label>
                 </div>
 
@@ -89,7 +110,6 @@ export default function Login({ status, canResetPassword }) {
                             Forgot your password?
                         </Link>
                     )}
-
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
                     </PrimaryButton>
