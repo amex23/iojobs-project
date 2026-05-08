@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="index, follow" />
 
+        <meta name="description" content="IOJobs Philippines - Online job portal connecting employers with skilled Filipino remote professionals, virtual assistants and workers in the Philippines. Post and find jobs now." />
+        <meta name="robots" content="index, follow" />
+
 
         <title inertia>{{ config('app.name', 'IOJobs') }}</title>
 
+        <link rel="canonical" href="https://iojobs.net" />
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
