@@ -43,7 +43,7 @@ export default function Show({ job }) {
                 </Link>
 
                 <div className="flex justify-start w-full min-h-screen">
-                    <div className="mt-6 shadow-md bg-white p-7 rounded-sm w-full lg:w-1/2">
+                    <div className="mt-6 shadow-md bg-white p-7 rounded-sm w-full">
                     <h1 className="text-2xl font-bold">{job.title}</h1>
                     <p className="text-gray-500 mt-2">
                         Posted by <span className="font-medium">{job.recruiter.name}</span>
