@@ -35,12 +35,12 @@ export default function JobseekerHeader({ jobs = [] }) {
     return (
         <div className="flex items-center justify-between mb-6 flex-col gap-y-4">
             <div className="w-full flex">
-                <span className='flex items-center gap-x-4 w-full mr-4'>
+                <span className='flex items-center gap-x-8 w-full mr-4'>
                 {/* <h2 className="font-bold text-2xl text-black shrink-0">IOJobs</h2> */}
                 <div className='flex items-center gap-1'>
                     <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="" />
                     <h1 className='font-bold text-2xl text-black'>
-                        jobs
+                        jobs | PH
                     </h1>
                 </div>
 

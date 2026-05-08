@@ -13,7 +13,7 @@ export default function RecruiterHeader({ jobs = [] }) {
             <a className='flex items-center gap-1' href={route('recruiter.dashboard')} >
                     <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="" />
                     <h1 className='font-bold text-2xl text-black'>
-                        jobs
+                        jobs | PH
                     </h1>
             </a>
 
