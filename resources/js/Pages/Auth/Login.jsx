@@ -17,6 +17,13 @@ function LoadingScreen() {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.location.href = '/dashboard';
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
             <div className='flex items-center gap-1'>
@@ -40,12 +47,9 @@ export default function Login({ status, canResetPassword }) {
 
     const submit = (e) => {
         e.preventDefault();
-        setShowLoading(true);
-        setTimeout(() => {
-            post(route('login'), {
-                onFinish: () => reset('password'),
-            });
-        }, 1000);
+        post(route('login'), {
+            onFinish: () => reset('password'),
+        });
     };
 
     if (showLoading) return <LoadingScreen />;
