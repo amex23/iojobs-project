@@ -10,7 +10,7 @@ export default function Show({ blog }) {
                     <header className="flex items-center justify-between mb-10">
                         <Link href="/" className="flex items-center gap-1">
                             <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="" />
-                            <h1 className='font-bold text-2xl text-black'>jobs</h1>
+                            <h1 className='font-bold text-2xl text-black'>jobs | PH</h1>
                         </Link>
                         <Link href={route('blogs.index')} className="text-sm text-gray-500 underline">← Back to Blogs</Link>
                     </header>
