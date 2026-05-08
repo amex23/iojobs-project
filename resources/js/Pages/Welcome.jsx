@@ -1,22 +1,94 @@
 import { Head, Link } from '@inertiajs/react';
+import { useState, useEffect } from 'react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs = [] }) {
-    const handleImageError = () => {
-        document
-            .getElementById('screenshot-container')
-            ?.classList.add('!hidden');
-        document.getElementById('docs-card')?.classList.add('!row-span-1');
-        document
-            .getElementById('docs-card-content')
-            ?.classList.add('!flex-row');
-        document.getElementById('background')?.classList.add('!hidden');
-    };
+function FeaturedJobsCarousel({ jobs }) {
+    const [paused, setPaused] = useState(false);
+
+    const mobileJobs = jobs.slice(0, 4);
 
     return (
         <>
+            {/* Mobile - show 4 static */}
+            <div className="flex flex-col gap-4 lg:hidden">
+                {mobileJobs.map((job, idx) => (
+                    <div key={`mobile-${job.id}-${idx}`} className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] flex-col">
+                        <div className="w-full">
+                            <h2 className="text-xl font-semibold">{job.title}</h2>
+                            <p className="text-xs text-gray-400 mt-1">
+                                {job.recruiter?.name} · {job.location} · ₱{job.salary_range}
+                            </p>
+                            <p className="mt-4 text-sm/relaxed text-gray-600">
+                                {job.description?.length > 150
+                                    ? job.description.substring(0, 150) + '...'
+                                    : job.description}
+                            </p>
+                        </div>
+                        <Link
+                            href={route('login')}
+                            className='self-center w-full flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-4 rounded-md'
+                        >
+                            <span className='text-sm'>Apply Now</span>
+                            <svg className="size-6 shrink-0 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </Link>
+                    </div>
+                ))}
+            </div>
+
+            {/* Desktop - continuous marquee scroll top to bottom */}
+            <div
+                className="hidden lg:block overflow-hidden"
+                style={{ height: '780px', backgroundColor: '#FAF9F5' }}
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+            >
+                    <div
+                        className="flex flex-col gap-0 bg-[#FAF9F5"
+                        style={{
+                            animation: paused ? 'none' : `scrollDown ${jobs.length * 4}s linear infinite`,
+                            animationPlayState: paused ? 'paused' : 'running',
+                        }}
+                    >
+                    {/* Duplicate jobs for seamless loop */}
+                    {[...jobs, ...jobs].map((job, idx) => (
+                        <div
+                            key={`desktop-${job.id}-${idx}`}
+                            className="flex items-start gap-4 rounded-lg bg-white p-6 ring-1 ring-white/[0.05] flex-col lg:flex-row shrink-0 mb-4 transition-shadow duration-300 hover:shadow-[0px_14px_34px_0px_rgba(0,0,0,0.12)] cursor-pointer"
+                        >
+                            <div className="pt-3 sm:pt-5 w-full lg:w-[75%]">
+                                <h2 className="text-xl font-semibold">{job.title}</h2>
+                                <p className="text-xs text-gray-400 mt-1">
+                                    {job.recruiter?.name} · {job.location} · ₱{job.salary_range}
+                                </p>
+                                <p className="mt-4 text-sm/relaxed text-gray-600">
+                                    {job.description?.length > 150
+                                        ? job.description.substring(0, 150) + '...'
+                                        : job.description}
+                                </p>
+                            </div>
+                            <Link
+                                href={route('login')}
+                                className='self-center lg:self-start lg:mt-5 w-auto lg:w-[25%] flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-4 lg:px-2 rounded-md'
+                            >
+                                <span className='text-sm'>Apply Now</span>
+                                <svg className="size-6 shrink-0 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                </svg>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+}
+export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs = [] }) {
+    return (
+        <>
             <Head>
-                <title>IOJobs - Online Jobs Philippines | Hire Remote Professionals</title>
-                <meta name="description" content="IOJobs is the top online job portal in the Philippines. Connect employers with skilled Filipino remote professionals, virtual assistants, and workers." />
+                <title>IOJobs Philippines - Online Jobs | Hire Remote Filipino Professionals</title>
+                <meta name="description" content="IOJobs Philippines - Online job portal connecting employers with skilled Filipino remote professionals, virtual assistants and workers in the Philippines. Post and find jobs now." />
                 <meta name="keywords" content="online jobs philippines, remote jobs philippines, virtual assistant philippines, hire filipino workers, work from home philippines, iojobs" />
                 <meta name="author" content="IOJobs" />
                 <meta property="og:title" content="IOJobs - Online Jobs Philippines" />
@@ -32,9 +104,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                         <header className="flex lg:grid items-center gap-2 py-10 lg:grid-cols-3">
                             <div className='flex items-center gap-1'>
                                 <img className="w-9 h-9 rounded-md" src="/io-logo2.png" alt="" />
-                                <h1 className='font-bold text-2xl text-black'>
-                                    jobs
-                                </h1>
+                                <h1 className='font-bold text-2xl text-black'>jobs</h1>
                             </div>
                             <div className="flex lg:col-start-2 lg:justify-center"></div>
                             <nav className="flex flex-1 justify-end">
@@ -70,17 +140,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                 {/* Left Panel - Hero */}
                                 <div className="flex flex-col items-start gap-6 overflow-visible rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] md:row-span-3 lg:p-10 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800">
 
-                                    {/* Hero Text */}
-                                    <div
-                                        id="screenshot-container"
-                                        className="relative flex w-full flex-1 items-stretch"
-                                    >
+                                    <div id="screenshot-container" className="relative flex w-full flex-1 items-stretch">
                                         <div className='flex flex-col text-center lg:text-start gap-y-5 lg:gap-y-28'>
                                             <h1 className="pd text-black text-4xl lg:text-5xl">
-                                                Hire the best
-                                                Remote/Local Professionals in the Philippines
+                                                Hire the best Remote/Local Professionals in the Philippines
                                             </h1>
-                                            <span className='hidden lg:flex w-full justify-between lg:bg-[#141413] text-white px-4 py-3 rounded-lg lg:flex-ro'>
+                                            <span className='hidden lg:flex w-full justify-between lg:bg-[#141413] text-white px-4 py-3 rounded-lg'>
                                                 <span className='flex flex-row text-2xl font-bold'>• Talent</span>
                                                 <span className='text-2xl font-bold'>• Teamwork</span>
                                                 <span className='text-2xl font-bold'>• Success</span>
@@ -146,47 +211,28 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                     </div>
                                 </div>
 
-                                {/* Featured Job Cards */}
-                                {featuredJobs.map(job => (
-                                    <div key={job.id} className="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 flex-col lg:flex-row">
-                                        <div className="pt-3 sm:pt-5 w-full lg:w-[75%]">
-                                            <h2 className="text-xl font-semibold dark:text-white">{job.title}</h2>
-                                            <p className="text-xs text-gray-400 mt-1">{job.recruiter?.name} · {job.location} . ₱{job.salary_range}</p>
-                                            
-                                            <p className="mt-4 text-sm/relaxed text-gray-600">
-                                                {job.description?.length > 150
-                                                    ? job.description.substring(0, 150) + '...'
-                                                    : job.description}
-                                            </p>
+                                {/* Featured Jobs */}
+                                {featuredJobs.length > 0 ? (
+                                    <div className="lg:row-span-3 ">
+                                        <FeaturedJobsCarousel jobs={featuredJobs} />
+                                    </div>
+                                ) : (
+                                    Array.from({ length: 3 }).map((_, i) => (
+                                        <div key={`placeholder-${i}`} className="flex items-center justify-center rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:ring-black/20 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 min-h-[120px]">
+                                            <p className="text-gray-400 text-sm">More jobs coming soon...</p>
                                         </div>
-                                        <Link
-                                            href={route('login')}
-                                            className='self-center lg:self-start lg:mt-5 w-auto lg:w-[25%] flex bg-[#141413] justify-center items-center py-2 text-white font-bold gap-2 px-4 lg:px-2 rounded-md'
-                                        >
-                                            <span className='text-sm md:text-md'>Apply Now</span>
-                                            <svg className="size-6 shrink-0 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                                            </svg>
-                                        </Link>
-                                    </div>
-                                ))}
-
-                                {/* Placeholder cards */}
-                                {Array.from({ length: Math.max(0, 3 - featuredJobs.length) }).map((_, i) => (
-                                    <div key={`placeholder-${i}`} className="flex items-center justify-center rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:ring-black/20 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 min-h-[120px]">
-                                        <p className="text-gray-400 text-sm">More jobs coming soon...</p>
-                                    </div>
-                                ))}
+                                    ))
+                                )}
 
                             </div>
                         </main>
 
-                        <footer className="py-10 lg:py-10 text-center text-sm text-gray-500 flex w-full justify-center flex-col gap-y-2">
+                        <footer className="py-10 text-center text-sm text-gray-500 flex w-full justify-center flex-col gap-y-2">
                             <span>IOJobs &copy; {new Date().getFullYear()} - Crafted with{' '}
-                            <span role="img" aria-label="Love">❤️</span>{' '}
-                            IOJobs</span>
+                                <span role="img" aria-label="Love">❤️</span>{' '}
+                                IOJobs
+                            </span>
                             <Link href={route('contact-us')} className='mt-2 lg:mt-0'>Contact Us</Link>
-
                             <div className='flex w-full items-center gap-x-2 justify-center'>
                                 <span className='w-6 h-6'>
                                     <a href="https://www.facebook.com/profile.php?id=61562832541551">
@@ -194,8 +240,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                                     </a>
                                 </span>
                                 <span className='w-7 h-7'>
-                                <a href="https://www.instagram.com/iojobsph/">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z"/></svg></a>
+                                    <a href="https://www.instagram.com/iojobsph/">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </footer>
