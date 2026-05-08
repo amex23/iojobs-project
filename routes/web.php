@@ -5,6 +5,7 @@ use App\Http\Controllers\JobPostController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\JobPostController as AdminJobPostController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Recruiter\RecruiterDashboardController;
 use App\Http\Controllers\Recruiter\JobPostController as RecruiterJobPostController;
 use App\Http\Controllers\Jobseeker\JobseekerDashboardController;
@@ -15,12 +16,13 @@ use Inertia\Inertia;
 use App\Http\Controllers\Jobseeker\MessageController as JobseekerMessageController;
 use App\Http\Controllers\Recruiter\MessageController as RecruiterMessageController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\BlogController;
 
 Route::get('/', function () {
     $featuredJobs = \App\Models\JobPost::where('featured', true)
-    ->with('recruiter:id,name')
-    ->latest()
-    ->get();
+        ->with('recruiter:id,name')
+        ->latest()
+        ->get();
 
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -59,6 +61,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::patch('/jobs/{jobPost}', [AdminJobPostController::class, 'update'])->name('jobs.update');
     Route::delete('/jobs/{jobPost}', [AdminJobPostController::class, 'destroy'])->name('jobs.destroy');
     Route::post('/jobs/{jobPost}/message', [AdminJobPostController::class, 'message'])->name('jobs.message');
+    Route::get('/blogs', [AdminBlogController::class, 'index'])->name('blogs.index');
+    Route::get('/blogs/create', [AdminBlogController::class, 'create'])->name('blogs.create');
+    Route::post('/blogs', [AdminBlogController::class, 'store'])->name('blogs.store');
+    Route::delete('/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('blogs.destroy');
+    Route::get('/blogs/{blog}/edit', [AdminBlogController::class, 'edit'])->name('blogs.edit');
+    Route::patch('/blogs/{blog}', [AdminBlogController::class, 'update'])->name('blogs.update');
 });
 
 // Recruiter
@@ -91,10 +99,18 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/messages/{thread}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 });
 
+// Public routes
 Route::get('/contact-us', function () {
     return Inertia::render('ContactUs');
 })->name('contact-us');
-
 Route::post('/contact-us', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show'])->name('blogs.show');
+
+
+Route::get('/blogs/{blog}/edit', [AdminBlogController::class, 'edit'])->name('blogs.edit');
+Route::patch('/blogs/{blog}', [AdminBlogController::class, 'update'])->name('blogs.update');
 
 require __DIR__.'/auth.php';
+
+

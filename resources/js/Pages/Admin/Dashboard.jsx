@@ -47,6 +47,12 @@ export default function Dashboard() {
                     >
                         👥 See All Users
                     </Link>
+                    <Link
+                        href={route('admin.blogs.index')}
+                        className="w-full lg:w-auto block bg-pink-600 text-white px-4 py-3 rounded hover:bg-pink-700"
+                    >
+                        📝 Blogs
+                    </Link>
                 </div>
             </div>
 
