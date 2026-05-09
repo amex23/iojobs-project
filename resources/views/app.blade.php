@@ -10,12 +10,12 @@
         <link rel="icon" type="image/png" href="{{ asset('io-logo2.png') }}">
 
         <!-- Canonical -->
-        <link rel="canonical" href="https://iojobs.ph" />
+        <link rel="canonical" href="https://iojobs.net" />
 
         <!-- Open Graph -->
-        <meta property="og:title" content="IOJobs PH - Online Jobs Philippines">
+        <meta property="og:title" content="IOJobs - Online Jobs Philippines">
         <meta property="og:description" content="Find and hire skilled Filipino remote workers and virtual assistants.">
-        <meta property="og:url" content="https://iojobs.ph">
+        <meta property="og:url" content="https://iojobs.net">
         <meta property="og:image" content="{{ asset('io-logo2.png') }}">
 
         <!-- Schema JSON-LD -->
@@ -24,11 +24,11 @@
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "IOJobs PH",
-            "url": "https://iojobs.ph",
+            "name": "IOJobs",
+            "url": "https://iojobs.net",
             "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://iojobs.ph/search?q={search_term_string}",
+                "target": "https://iojobs.net/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
             }
         }
