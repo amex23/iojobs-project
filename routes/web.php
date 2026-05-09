@@ -17,6 +17,10 @@ use App\Http\Controllers\Jobseeker\MessageController as JobseekerMessageControll
 use App\Http\Controllers\Recruiter\MessageController as RecruiterMessageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\BlogController;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\Blog;
+
 
 Route::get('/', function () {
     $featuredJobs = \App\Models\JobPost::where('featured', true)
@@ -110,6 +114,29 @@ Route::get('/blogs/{blog:slug}', [BlogController::class, 'show'])->name('blogs.s
 
 Route::get('/blogs/{blog}/edit', [AdminBlogController::class, 'edit'])->name('blogs.edit');
 Route::patch('/blogs/{blog}', [AdminBlogController::class, 'update'])->name('blogs.update');
+
+
+Route::get('/generate-sitemap', function () {
+    $sitemap = Sitemap::create()
+        ->add(Url::create('/'))
+        ->add(Url::create('/jobs'))
+        ->add(Url::create('/login'))
+        ->add(Url::create('/register'))
+        ->add(Url::create('/blogs'));
+
+    // Add each blog post
+    Blog::all()->each(function (Blog $blog) use ($sitemap) {
+        $sitemap->add(
+            Url::create("/blogs/{$blog->slug}")
+                ->setLastModificationDate($blog->updated_at)
+                ->setPriority(0.8)
+        );
+    });
+
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+
+    return 'Sitemap generated!';
+});
 
 require __DIR__.'/auth.php';
 
