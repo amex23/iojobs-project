@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="index, follow" />
+        <meta name="google-site-verification" content="tWkTG2ka1WvVvsEiQcR-E2soTguJy9fHoNVovt2PXC0" /> 
         <meta name="description" content="IOJobs Philippines - Online job portal connecting employers with skilled Filipino remote professionals, virtual assistants and workers in the Philippines. Post and find jobs now." />
 
         <!-- Favicon -->
