@@ -237,7 +237,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, featuredJobs
                             <span className='space-x-3'>
                                 
                                 <Link href={route('blogs.index')} className='mt-2 lg:mt-0'>Blogs</Link>
-                                <Link href={route('contact-us')} className='mt-2 lg:mt-0'>Contact Us</Link>
+                                <Link href={route('contact-us')} className='mt-2 lg:mt-0'>Contact</Link>
                             </span>
                             <div className='flex w-full items-center gap-x-2 justify-center'>
                                 <span className='w-6 h-6'>
